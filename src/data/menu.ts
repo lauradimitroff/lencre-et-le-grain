@@ -1,0 +1,233 @@
+import type { Allergen, MenuItem, MenuSection } from '@/types/catalog'
+
+/** Carte fictive, entièrement végétale. */
+export const menuSections: MenuSection[] = [
+  {
+    id: 'comptoir',
+    title: 'Au comptoir',
+    note: "Lait d'avoine par défaut, amande ou soja sans supplément.",
+  },
+  { id: 'douces', title: 'Méthodes douces' },
+  { id: 'sans-cafe', title: 'Sans café' },
+  { id: 'saison', title: 'De saison · automne' },
+  { id: 'patisseries', title: 'Pâtisseries maison', note: 'Préparées chaque matin dans notre fournil.' },
+]
+
+export const allergenLabels: Record<Allergen, { short: string; label: string }> = {
+  gluten: { short: 'G', label: 'Gluten' },
+  'fruits-a-coque': { short: 'FC', label: 'Fruits à coque' },
+  soja: { short: 'S', label: 'Soja' },
+}
+
+export const menuItems: MenuItem[] = [
+  // Au comptoir
+  {
+    id: 'espresso',
+    name: 'Espresso',
+    description: 'Assemblage maison Brésil & Éthiopie : cacao, noisette grillée.',
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 220,
+  },
+  {
+    id: 'allonge',
+    name: 'Allongé',
+    description: "L'espresso détendu à l'eau chaude, pour lire plus longtemps.",
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 260,
+  },
+  {
+    id: 'cortado',
+    name: 'Cortado',
+    description: "Espresso coupé d'un trait de lait d'avoine chaud.",
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 320,
+  },
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    description: "Mousse d'avoine veloutée, une pincée de cacao.",
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 400,
+  },
+  {
+    id: 'flat-white',
+    name: 'Flat white',
+    description: 'Double ristretto et micro-mousse très fine.',
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 430,
+  },
+  {
+    id: 'latte',
+    name: 'Latte',
+    description: 'Double espresso, lait végétal au choix.',
+    section: 'comptoir',
+    kind: 'boisson',
+    price: 450,
+  },
+
+  // Méthodes douces
+  {
+    id: 'filtre-v60',
+    name: 'Filtre V60',
+    description: 'Origine du moment : Éthiopie Guji, bergamote et pêche blanche.',
+    section: 'douces',
+    kind: 'boisson',
+    price: 450,
+  },
+  {
+    id: 'chemex',
+    name: 'Chemex à partager',
+    description: 'Deux grandes tasses, pour une conversation ou un long chapitre.',
+    section: 'douces',
+    kind: 'boisson',
+    price: 750,
+  },
+  {
+    id: 'cold-brew',
+    name: 'Cold brew',
+    description: 'Infusé à froid seize heures, servi sur glace.',
+    section: 'douces',
+    kind: 'boisson',
+    price: 420,
+  },
+
+  // Sans café
+  {
+    id: 'chocolat-chaud',
+    name: 'Chocolat chaud',
+    description: "Chocolat noir 70 % fondu dans le lait d'avoine.",
+    section: 'sans-cafe',
+    kind: 'boisson',
+    price: 480,
+  },
+  {
+    id: 'matcha-latte',
+    name: 'Matcha latte',
+    description: "Matcha de Kagoshima, lait d'amande.",
+    section: 'sans-cafe',
+    kind: 'boisson',
+    price: 500,
+    allergens: ['fruits-a-coque'],
+  },
+  {
+    id: 'thes',
+    name: 'Thés en vrac',
+    description: 'Sencha, earl grey aux fleurs de bleuet, rooibos vanille.',
+    section: 'sans-cafe',
+    kind: 'boisson',
+    price: 380,
+  },
+  {
+    id: 'infusion',
+    name: 'Infusion du jardin',
+    description: 'Verveine et menthe fraîche.',
+    section: 'sans-cafe',
+    kind: 'boisson',
+    price: 350,
+  },
+
+  // De saison
+  {
+    id: 'latte-erable-pecan',
+    name: 'Latte érable & pécan',
+    description: "Sirop d'érable maison, éclats de pécan torréfiés.",
+    section: 'saison',
+    kind: 'boisson',
+    price: 540,
+    allergens: ['fruits-a-coque'],
+  },
+  {
+    id: 'chai-bouquiniste',
+    name: 'Chaï du bouquiniste',
+    description: 'Thé noir, cardamome, cannelle et gingembre frais.',
+    section: 'saison',
+    kind: 'boisson',
+    price: 490,
+  },
+  {
+    id: 'pomme-chaude',
+    name: 'Jus de pomme chaud épicé',
+    description: 'Pommes du Perche, clou de girofle et orange.',
+    section: 'saison',
+    kind: 'boisson',
+    price: 400,
+  },
+
+  // Pâtisseries
+  {
+    id: 'cookie',
+    name: 'Cookie chocolat noir & fleur de sel',
+    description: 'Croustillant dehors, fondant au cœur.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 320,
+    allergens: ['gluten'],
+  },
+  {
+    id: 'brioche-cannelle',
+    name: 'Brioche roulée à la cannelle',
+    description: "Pâte levée à l'huile d'olive, glaçage léger.",
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 390,
+    allergens: ['gluten'],
+  },
+  {
+    id: 'banana-bread',
+    name: 'Banana bread aux noix',
+    description: 'Bananes bien mûres, sucre complet, noix de Grenoble.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 380,
+    allergens: ['gluten', 'fruits-a-coque'],
+  },
+  {
+    id: 'carrot-cake',
+    name: 'Carrot cake',
+    description: 'Glaçage crème de cajou et citron vert.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 460,
+    allergens: ['gluten', 'fruits-a-coque'],
+  },
+  {
+    id: 'tarte-pommes',
+    name: 'Tarte fine pommes & amandes',
+    description: "Pâte brisée à l'huile de coco, frangipane d'amande.",
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 440,
+    allergens: ['gluten', 'fruits-a-coque'],
+  },
+  {
+    id: 'madeleines',
+    name: 'Madeleines au citron, par trois',
+    description: 'Bossues comme il faut, à tremper dans le thé.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 350,
+    allergens: ['gluten', 'soja'],
+  },
+  {
+    id: 'moelleux-sans-gluten',
+    name: 'Moelleux chocolat sans gluten',
+    description: 'Farine de riz et de sarrasin, cœur coulant.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 420,
+  },
+  {
+    id: 'granola',
+    name: 'Granola & yaourt de coco',
+    description: 'Granola maison, compotée de fruits de saison.',
+    section: 'patisseries',
+    kind: 'patisserie',
+    price: 520,
+    allergens: ['gluten', 'fruits-a-coque'],
+  },
+]

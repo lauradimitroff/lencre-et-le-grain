@@ -1,0 +1,37 @@
+{
+  "name": "lencre-et-le-grain",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site vitrine fictif d'un café-librairie, réalisé avec Vue 3, TypeScript et Vite (projet de portfolio).",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite-ssg build",
+    "build:spa": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.5",
+    "@fontsource-variable/instrument-sans": "^5.2.5",
+    "@unhead/vue": "^2.0.11",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.9.3",
+    "vite": "^6.4.1",
+    "vite-ssg": "~27.1.0",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^3.1.0"
+  }
+}

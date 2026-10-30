@@ -1,0 +1,98 @@
+/*
+ * Design tokens — L'Encre & le Grain
+ * Base éditoriale (direction A) + structure d'atelier et kraft (direction B).
+ * Toutes les couleurs, typos, espacements et durées sont centralisés ici.
+ */
+:root {
+  /* Palette de marque */
+  --mint-100: #e3f1ea; /* univers librairie */
+  --mint-300: #bfddd0; /* vert d'eau, couleur principale */
+  --forest-900: #1c3a2e; /* vert forêt, contraste */
+  --forest-700: #2e5544;
+  --cream-50: #fcfaf5; /* ivoire, fond principal */
+  --cream-100: #f6f0e4; /* crème */
+  --sand-300: #e2d3b8; /* sable */
+  --kraft-400: #d8c3a0; /* kraft, univers café */
+  --coffee-700: #6e4b32; /* brun café, accents sur fond clair */
+  --coffee-900: #3d2a1c; /* brun torréfié, texte sur kraft */
+  --ink-900: #1b2621;
+  --ink-600: #4a5750;
+
+  /* Rôles sémantiques */
+  --color-bg: var(--cream-50);
+  --color-bg-alt: var(--cream-100);
+  --color-surface: #ffffff;
+  --color-library: var(--mint-100);
+  --color-accent: var(--mint-300);
+  --color-cafe: var(--kraft-400);
+  --color-cafe-ink: var(--coffee-900);
+  --color-primary: var(--forest-900);
+  --color-primary-hover: var(--forest-700);
+  --color-on-primary: var(--cream-50);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-600);
+  --color-warm: var(--coffee-700);
+  --color-line: rgb(28 58 46 / 0.14);
+  --color-line-strong: var(--forest-900);
+  --color-focus: var(--coffee-700);
+
+  /* Typographie */
+  --font-serif: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --text-2xl: clamp(1.875rem, 1.45rem + 1.9vw, 3rem);
+  --text-3xl: clamp(2.5rem, 1.7rem + 3.8vw, 5rem);
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.3;
+  --leading-body: 1.65;
+
+  --tracking-label: 0.14em;
+  --tracking-button: 0.08em;
+
+  /* Espacements */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* Mise en page */
+  --container: 76rem;
+  --container-narrow: 46rem;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --header-height: 4.5rem;
+
+  /* Formes et effets */
+  --border-rule: 1.5px;
+  --radius-xs: 2px;
+  --radius-btn: 4px;
+  --radius-card: 10px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 1px 2px rgb(28 58 46 / 0.06), 0 10px 24px -14px rgb(28 58 46 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(28 58 46 / 0.06), 0 22px 40px -20px rgb(28 58 46 / 0.4);
+
+  /* Mouvement */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-reveal: 700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-reveal: 0ms;
+  }
+}
