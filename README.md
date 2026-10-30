@@ -3,6 +3,8 @@
 Site vitrine d'un **café-librairie fictif**, réalisé pour un portfolio de développeuse web.
 Café de spécialité, librairie indépendante, carte 100 % végétale et accords « livre + café ».
 
+**Site en ligne : [lencre-et-le-grain.vercel.app](https://lencre-et-le-grain.vercel.app)**
+
 > Ce commerce n'existe pas : le lieu, la carte du café, l'adresse et les horaires sont inventés,
 > et le site le signale partout où c'est utile. Les **livres présentés sont réels** (éditions
 > françaises, prix publics indicatifs relevés le 29 octobre 2026). Leurs résumés sont rédigés
