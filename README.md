@@ -18,7 +18,8 @@ carte (« les plus demandés »), esprit du lieu, accords livre + café, newslet
 et pied de page. La navigation y mène par ancres (`/#librairie`, `/#cafe`, `/#histoire`).
 
 La **carte complète du café** a sa propre page, [`/carte`](https://lencre-et-le-grain.vercel.app/carte),
-pré-rendue comme l'accueil. Une page 404 complète l'ensemble.
+pré-rendue comme l'accueil, tout comme la page [`/credits`](https://lencre-et-le-grain.vercel.app/credits)
+(photos, polices, sources). Une page 404 complète l'ensemble.
 
 ## Stack et choix techniques
 
@@ -171,4 +172,5 @@ seule l'URL de production est indexable.
 
 - `npm audit` signale des vulnérabilités dans des dépendances **de développement** de Vitest 3
   (aucune dans le code livré). La correction passe par Vitest 4, qui demande Node 20.19 ou plus.
-- Photographies : [Unsplash](https://unsplash.com), licence Unsplash.
+- Photographies : [Unsplash](https://unsplash.com), licence Unsplash. Le détail est sur la page
+  `/credits`, alimentée par [`src/data/images.ts`](src/data/images.ts).

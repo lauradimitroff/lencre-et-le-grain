@@ -21,6 +21,7 @@ const year = new Date().getFullYear()
             <RouterLink :to="item.to">{{ item.label }}</RouterLink>
           </li>
           <li><RouterLink :to="{ path: '/', hash: '#newsletter' }">Lettre d'information</RouterLink></li>
+          <li><RouterLink to="/credits">Crédits</RouterLink></li>
         </ul>
       </nav>
 
@@ -54,8 +55,8 @@ const year = new Date().getFullYear()
         commande ni réservation n'est possible.
       </p>
       <p>
-        Photographies : Unsplash (licence Unsplash). Les couvertures sont des illustrations créées
-        pour le site, pas celles des éditeurs. Les prix des livres sont indicatifs.
+        Les couvertures sont des illustrations créées pour le site. Photos, polices et sources :
+        <RouterLink to="/credits" class="footer__legal-link">voir les crédits</RouterLink>.
       </p>
     </div>
   </footer>
@@ -167,5 +168,13 @@ const year = new Date().getFullYear()
   border-top: 1px solid rgb(246 240 228 / 0.18);
   color: rgb(246 240 228 / 0.75);
   font-size: var(--text-xs);
+}
+.footer__legal .footer__legal-link {
+  color: var(--mint-300);
+  font-weight: 600;
+}
+
+.footer__legal .footer__legal-link:hover {
+  color: var(--cream-50);
 }
 </style>

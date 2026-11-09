@@ -12,6 +12,11 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/MenuPage.vue'),
   },
   {
+    path: '/credits',
+    name: 'credits',
+    component: () => import('@/pages/CreditsPage.vue'),
+  },
+  {
     // Pré-rendue en 404.html, servie par Vercel pour les URL inconnues.
     path: '/404',
     name: 'not-found',
