@@ -49,7 +49,7 @@ const resultLabel = computed(() => `${pluralize(filtered.value.length, 'titre')}
       </div>
 
       <ul class="selection__grid">
-        <li v-for="book in visibleBooks" :key="book.id">
+        <li v-for="(book, index) in visibleBooks" :key="book.id" v-reveal="(index % 4) * 70">
           <BookCard :book="book" />
         </li>
       </ul>
