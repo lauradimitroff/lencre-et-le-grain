@@ -45,12 +45,11 @@ usePageMeta({
             <ResponsiveImage :photo="photo" :ratio="4 / 3" sizes="(min-width: 48rem) 20rem, 100vw" :widths="[320, 640]" />
             <div class="credits__photo-text">
               <p class="credits__usage">{{ photo.usage }}</p>
-              <p v-if="photo.credit">
+              <p>
                 Photo de
                 <a :href="photo.credit.authorUrl" rel="noopener">{{ photo.credit.author }}</a>
                 sur <a :href="photo.credit.photoUrl" rel="noopener">Unsplash</a>
               </p>
-              <p v-else>Photo Unsplash</p>
             </div>
           </li>
         </ul>
