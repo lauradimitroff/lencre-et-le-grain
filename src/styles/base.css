@@ -127,13 +127,6 @@ a:hover {
   color: var(--color-warm);
 }
 
-.eyebrow::before {
-  content: '';
-  width: 1.75rem;
-  height: 1px;
-  background: currentColor;
-}
-
 /* Apparition au défilement (activée uniquement côté client, cf. directives/reveal.ts) */
 .reveal {
   opacity: 0;
