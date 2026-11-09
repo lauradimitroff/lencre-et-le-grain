@@ -60,6 +60,7 @@ export const menuItems: MenuItem[] = [
     section: 'comptoir',
     kind: 'boisson',
     price: 430,
+    bestSeller: true,
   },
   {
     id: 'latte',
@@ -78,6 +79,7 @@ export const menuItems: MenuItem[] = [
     section: 'douces',
     kind: 'boisson',
     price: 450,
+    bestSeller: true,
   },
   {
     id: 'chemex',
@@ -140,6 +142,7 @@ export const menuItems: MenuItem[] = [
     kind: 'boisson',
     price: 540,
     allergens: ['fruits-a-coque'],
+    bestSeller: true,
   },
   {
     id: 'chai-bouquiniste',
@@ -148,6 +151,7 @@ export const menuItems: MenuItem[] = [
     section: 'saison',
     kind: 'boisson',
     price: 490,
+    bestSeller: true,
   },
   {
     id: 'pomme-chaude',
@@ -167,6 +171,7 @@ export const menuItems: MenuItem[] = [
     kind: 'patisserie',
     price: 320,
     allergens: ['gluten'],
+    bestSeller: true,
   },
   {
     id: 'brioche-cannelle',
@@ -176,6 +181,7 @@ export const menuItems: MenuItem[] = [
     kind: 'patisserie',
     price: 390,
     allergens: ['gluten'],
+    bestSeller: true,
   },
   {
     id: 'banana-bread',

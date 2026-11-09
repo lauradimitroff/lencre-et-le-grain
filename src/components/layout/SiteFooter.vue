@@ -71,12 +71,12 @@ const year = new Date().getFullYear()
 
 .footer a {
   color: var(--cream-50);
-  text-decoration-color: rgb(252 250 245 / 0.35);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
 }
 
 .footer a:hover {
   color: var(--mint-300);
-  text-decoration-color: currentColor;
 }
 
 .footer :focus-visible {

@@ -5,10 +5,14 @@ export interface NavItem {
   to: RouteLocationRaw
 }
 
-/** Site en one page : la navigation mène aux sections de l'accueil par ancres. */
+/**
+ * L'accueil reste une page unique (sections atteintes par ancres) ;
+ * seule la carte complète du café a sa propre page.
+ */
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', to: '/' },
   { label: 'La librairie', to: { path: '/', hash: '#librairie' } },
   { label: 'Le café', to: { path: '/', hash: '#cafe' } },
+  { label: 'La carte', to: '/carte' },
   { label: 'Notre histoire', to: { path: '/', hash: '#histoire' } },
 ]

@@ -32,6 +32,15 @@ export function getMenu(sectionIds?: MenuSectionId[]): MenuSectionWithItems[] {
   }))
 }
 
+/** Sélection courte pour l'accueil : les articles marqués « bestSeller », boissons puis pâtisseries. */
+export function getBestSellers(): MenuSectionWithItems[] {
+  const best = menuItems.filter((item) => item.bestSeller)
+  return [
+    { id: 'comptoir', title: 'Côté tasse', items: best.filter((item) => item.kind === 'boisson') },
+    { id: 'patisseries', title: 'Côté four', items: best.filter((item) => item.kind === 'patisserie') },
+  ]
+}
+
 function findOrThrow<T extends { id: string }>(list: T[], id: string, label: string): T {
   const found = list.find((item) => item.id === id)
   if (!found) throw new Error(`${label} introuvable : « ${id} »`)

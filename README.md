@@ -13,10 +13,12 @@ Café de spécialité, librairie indépendante, carte 100 % végétale et accord
 
 ## Format
 
-Le site est un **one page** : hero, sélection de livres, carte du café, esprit du lieu, accords
-livre + café, newsletter de démonstration et pied de page. La navigation mène aux sections par
-ancres (`/#librairie`, `/#cafe`, `/#histoire`). Vue Router reste en place pour la page 404 et
-pour pouvoir ajouter des pages plus tard sans refonte.
+L'accueil est une **page unique** : bandeau de démonstration, hero en photo pleine largeur, sélection de livres, extrait de la
+carte (« les plus demandés »), esprit du lieu, accords livre + café, newsletter de démonstration
+et pied de page. La navigation y mène par ancres (`/#librairie`, `/#cafe`, `/#histoire`).
+
+La **carte complète du café** a sa propre page, [`/carte`](https://lencre-et-le-grain.vercel.app/carte),
+pré-rendue comme l'accueil. Une page 404 complète l'ensemble.
 
 ## Stack et choix techniques
 
@@ -26,7 +28,7 @@ pour pouvoir ajouter des pages plus tard sans refonte.
 - **vite-ssg** pour pré-rendre chaque route en HTML statique au build
 - **@unhead/vue** pour le titre, les méta-descriptions, la balise canonique et Open Graph
 - **Vitest** + **@vue/test-utils** pour les tests
-- Polices auto-hébergées avec **Fontsource** : Fraunces (titres) et Instrument Sans (texte)
+- Polices auto-hébergées avec **Fontsource** : Newsreader (titres) et Instrument Sans (texte)
 
 ### Pourquoi Vue 3 + Vite + vite-ssg plutôt que Nuxt ?
 
@@ -48,7 +50,7 @@ un compte client, Nuxt deviendrait pertinent.
 
 Mélange de deux pistes explorées en amont :
 
-- **Base éditoriale** : nom, palette lumineuse, Fraunces en italique pour l'esperluette,
+- **Base éditoriale** : nom, palette lumineuse, Newsreader en italique pour l'esperluette,
   ombres légères, filtres en pilule.
 - **Structure d'atelier** : filets vert forêt, étiquettes « tamponnées », boutons en
   capitales et **papier kraft pour tout l'univers du café**.

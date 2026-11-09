@@ -3,17 +3,28 @@ import MenuItemRow from './MenuItemRow.vue'
 import { allergenLabels } from '@/data/menu'
 import type { MenuSectionWithItems } from '@/services/catalog'
 
-defineProps<{ sections: MenuSectionWithItems[] }>()
+withDefaults(
+  defineProps<{
+    sections: MenuSectionWithItems[]
+    title?: string
+    intro?: string
+    /** Niveau du titre de la fiche ; les rubriques prennent le niveau suivant. */
+    level?: 2 | 3
+  }>(),
+  {
+    title: 'La carte du café',
+    intro: 'Tout est végétal, des laits aux pâtisseries. On commande et on règle au comptoir.',
+    level: 3,
+  },
+)
 </script>
 
 <template>
   <div class="menu-card">
     <div class="menu-card__head">
       <div>
-        <h3 class="menu-card__title">La carte du café</h3>
-        <p class="menu-card__intro">
-          Tout est végétal, des laits aux pâtisseries. On commande et on règle au comptoir.
-        </p>
+        <component :is="`h${level}`" class="menu-card__title">{{ title }}</component>
+        <p class="menu-card__intro">{{ intro }}</p>
       </div>
       <p class="menu-card__stamp" aria-hidden="true"><span><b>100 %</b>végétal</span></p>
     </div>
@@ -25,12 +36,18 @@ defineProps<{ sections: MenuSectionWithItems[] }>()
         class="menu-card__section"
         :aria-labelledby="`menu-${section.id}`"
       >
-        <h4 :id="`menu-${section.id}`" class="menu-card__section-title">{{ section.title }}</h4>
+        <component :is="`h${level + 1}`" :id="`menu-${section.id}`" class="menu-card__section-title">
+          {{ section.title }}
+        </component>
         <p v-if="section.note" class="menu-card__note">{{ section.note }}</p>
         <ul class="menu-card__items">
           <MenuItemRow v-for="item in section.items" :key="item.id" :item="item" />
         </ul>
       </section>
+    </div>
+
+    <div v-if="$slots.default" class="menu-card__actions">
+      <slot />
     </div>
 
     <div class="menu-card__foot">
@@ -156,6 +173,13 @@ defineProps<{ sections: MenuSectionWithItems[] }>()
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.menu-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
 }
 
 .menu-card__foot {

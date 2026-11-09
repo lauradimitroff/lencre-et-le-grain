@@ -10,8 +10,8 @@ export const shopInfo = {
   email: 'bonjour@lencre-et-le-grain.example',
   hours: [
     { days: 'Lundi', hours: 'Fermé' },
-    { days: 'Mardi – vendredi', hours: '8 h – 19 h' },
-    { days: 'Samedi', hours: '9 h – 20 h' },
-    { days: 'Dimanche', hours: '9 h 30 – 18 h' },
+    { days: 'Du mardi au vendredi', hours: '8 h à 19 h' },
+    { days: 'Samedi', hours: '9 h à 20 h' },
+    { days: 'Dimanche', hours: '9 h 30 à 18 h' },
   ],
 } as const

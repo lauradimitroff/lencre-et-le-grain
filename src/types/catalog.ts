@@ -62,6 +62,8 @@ export interface MenuItem {
   kind: 'boisson' | 'patisserie'
   price: PriceInCents
   allergens?: Allergen[]
+  /** Mis en avant sur l'accueil (« les plus demandés »). */
+  bestSeller?: boolean
 }
 
 /* ---------- Accords livre + café ---------- */

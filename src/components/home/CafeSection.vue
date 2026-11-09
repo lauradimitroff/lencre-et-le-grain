@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import BaseButton from '@/components/ui/BaseButton.vue'
 import MenuCard from '@/components/cafe/MenuCard.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import { photos } from '@/data/images'
-import { getMenu } from '@/services/catalog'
+import { getBestSellers, getMenu } from '@/services/catalog'
+import { pluralize } from '@/utils/format'
 
-const menu = getMenu()
+const bestSellers = getBestSellers()
+const totalCount = getMenu().reduce((sum, section) => sum + section.items.length, 0)
 </script>
 
 <template>
@@ -28,7 +31,15 @@ const menu = getMenu()
         </figure>
       </div>
 
-      <MenuCard :sections="menu" v-reveal />
+      <MenuCard
+        :sections="bestSellers"
+        title="Les plus demandés"
+        intro="Ce que l'on commande le plus au comptoir en ce moment. Tout est végétal, des laits aux pâtisseries."
+        v-reveal
+      >
+        <BaseButton to="/carte">Voir toute la carte</BaseButton>
+        <p class="cafe__count">{{ pluralize(totalCount, 'boisson ou douceur', 'boissons et douceurs') }} au total</p>
+      </MenuCard>
     </div>
   </section>
 </template>
@@ -50,6 +61,11 @@ const menu = getMenu()
   overflow: hidden;
   border: var(--border-rule) solid var(--color-primary);
   border-radius: var(--radius-card);
+}
+
+.cafe__count {
+  color: var(--color-cafe-ink);
+  font-size: var(--text-xs);
 }
 
 @media (min-width: 56rem) {

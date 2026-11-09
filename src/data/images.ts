@@ -11,10 +11,10 @@ export interface Photo {
 }
 
 export const photos = {
-  heroLattes: {
-    id: '1509042239860-f550ce710b93',
-    alt: 'Quatre tasses de cappuccino décorées d’un cœur, posées parmi des plantes vertes sur une table en bois.',
-    color: '#c9cfc2',
+  heroCafeInterior: {
+    id: '1521017432531-fbd92d768814',
+    alt: 'Salle de café lumineuse aux tables en bois, avec un comptoir, des étagères garnies et des revues posées sur une table.',
+    color: '#8c8478',
   },
   vintageBookStacks: {
     id: '1550399105-05c4a7641b02',

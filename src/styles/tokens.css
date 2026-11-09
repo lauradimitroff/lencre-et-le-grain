@@ -1,8 +1,21 @@
 /*
- * Design tokens — L'Encre & le Grain
+ * Design tokens : L'Encre & le Grain
  * Base éditoriale (direction A) + structure d'atelier et kraft (direction B).
  * Toutes les couleurs, typos, espacements et durées sont centralisés ici.
  */
+/*
+ * Police de secours aux métriques de Newsreader (calculées sur Georgia) :
+ * le texte ne « saute » pas quand la vraie police finit de charger.
+ */
+@font-face {
+  font-family: 'Newsreader Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 90.95%;
+  ascent-override: 80.81%;
+  descent-override: 29.14%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* Palette de marque */
   --mint-100: #e3f1ea; /* univers librairie */
@@ -37,7 +50,7 @@
   --color-focus: var(--coffee-700);
 
   /* Typographie */
-  --font-serif: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --font-serif: 'Newsreader Variable', 'Newsreader Fallback', Georgia, serif;
   --font-sans: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --text-2xs: 0.6875rem;
