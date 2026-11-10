@@ -25,7 +25,8 @@ for (const { path, title } of pages) {
 
     expect(response?.status()).toBe(200)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title)
-    await expect(page.getByText('Boutique fictive réalisée pour un portfolio')).toBeVisible()
+    await expect(page.locator('.demo-banner')).toContainText(/Boutique fictive/)
+    await expect(page.locator('.demo-banner')).toBeVisible()
     await expect(page).toHaveTitle(/boutique fictive|Crédits/i)
     expect(errors).toEqual([])
   })
@@ -45,7 +46,7 @@ test('le menu principal mène aux bonnes pages', async ({ page, isMobile }) => {
     ['Le café', '/carte'],
     ['Notre histoire', '/histoire'],
   ] as const) {
-    if (isMobile) await page.getByRole('button', { name: /menu/i }).click()
+    if (isMobile) await page.getByRole('button', { name: 'Menu', exact: true }).click()
     await nav.getByRole('link', { name: label }).click()
     await expect(page).toHaveURL(path)
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
@@ -71,4 +72,44 @@ test('aucune page ne déborde horizontalement', async ({ page }) => {
     )
     expect(overflow, path).toBeLessThanOrEqual(0)
   }
+})
+
+test.describe('menu mobile', () => {
+  test.skip(({ isMobile }) => !isMobile, 'Panneau latéral réservé au mobile')
+
+  test("s'ouvre en panneau latéral et se referme au clavier ou par le voile", async ({ page }) => {
+    await page.goto('/')
+    const toggle = page.getByRole('button', { name: 'Menu', exact: true })
+    const nav = page.getByRole('navigation', { name: 'Navigation principale' })
+
+    await expect(nav).toBeHidden()
+    await toggle.click()
+    await expect(nav).toBeVisible()
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    await expect(nav.getByRole('link', { name: 'Accueil' })).toBeFocused()
+
+    // Échap ferme et rend le focus au bouton
+    await page.keyboard.press('Escape')
+    await expect(nav).toBeHidden()
+    await expect(toggle).toBeFocused()
+
+    // Un clic sur le voile ferme aussi
+    await toggle.click()
+    await expect(nav).toBeVisible()
+    await page.mouse.click(20, 400)
+    await expect(nav).toBeHidden()
+  })
+
+  test('garde le focus dans le panneau', async ({ page }) => {
+    await page.goto('/')
+    await page.getByRole('button', { name: 'Menu', exact: true }).click()
+    const nav = page.getByRole('navigation', { name: 'Navigation principale' })
+    await expect(nav.getByRole('link', { name: 'Accueil' })).toBeFocused()
+
+    for (let i = 0; i < 10; i++) await page.keyboard.press('Tab')
+    const inside = await page.evaluate(() =>
+      Boolean(document.activeElement?.closest('#menu-principal')),
+    )
+    expect(inside).toBe(true)
+  })
 })

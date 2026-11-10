@@ -154,3 +154,8 @@ a:hover {
     transform: none;
   }
 }
+
+/* Menu mobile ouvert : la page derrière le panneau ne défile plus */
+html.has-drawer-open {
+  overflow: hidden;
+}
