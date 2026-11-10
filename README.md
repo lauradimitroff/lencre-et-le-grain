@@ -3,7 +3,8 @@
 [![CI](https://github.com/lauradimitroff/lencre-et-le-grain/actions/workflows/ci.yml/badge.svg)](https://github.com/lauradimitroff/lencre-et-le-grain/actions/workflows/ci.yml)
 
 Site vitrine d'un **café-librairie fictif**, réalisé pour un portfolio de développeuse web.
-Café de spécialité, librairie indépendante, carte 100 % végétale et accords « livre + café ».
+Un café de spécialité avant tout, avec un coin librairie, une carte 100 % végétale et des
+accords « livre + café ».
 
 **Site en ligne : [lencre-et-le-grain.vercel.app](https://lencre-et-le-grain.vercel.app)**
 
@@ -15,15 +16,16 @@ Café de spécialité, librairie indépendante, carte 100 % végétale et accord
 
 ## Format
 
-L'accueil est une **page unique** : hero en photo pleine largeur, quatre coups de cœur de la
-librairie, extrait de la carte (« les plus demandés »), esprit du lieu, accords livre + café avec
-un petit quiz (« Quel livre avec quel café ? »), newsletter de démonstration et pied de page. Chaque aperçu renvoie à sa page complète, et le
-menu mène directement à ces pages, pré-rendues comme l'accueil :
+L'accueil est une **page unique** : hero en photo pleine largeur, extrait de la carte (« les plus
+demandés »), quatre coups de cœur du coin librairie, esprit du lieu, accords livre + café avec un
+petit quiz (« Quel livre avec quel café ? »), newsletter de démonstration et pied de page. Le café
+passe en premier partout (menu, accueil, boutons) : c'est l'activité principale. Chaque aperçu
+renvoie à sa page complète, et le menu mène directement à ces pages, pré-rendues comme l'accueil :
 
-- [`/librairie`](https://lencre-et-le-grain.vercel.app/librairie) : toute la sélection de livres,
-  avec filtres par genre, détails et prix indicatifs
 - [`/carte`](https://lencre-et-le-grain.vercel.app/carte) : la carte complète du café, avec un
   filtre allergènes (« Sans gluten », « Sans fruits à coque », « Sans soja »)
+- [`/librairie`](https://lencre-et-le-grain.vercel.app/librairie) : toute la sélection du coin librairie,
+  avec filtres par genre, détails et prix indicatifs
 - [`/histoire`](https://lencre-et-le-grain.vercel.app/histoire) : l'histoire (inventée) du lieu
 - [`/contact`](https://lencre-et-le-grain.vercel.app/contact) : infos pratiques, plan illustratif
   et formulaire de démonstration. Il valide la saisie, simule l'envoi, puis précise que rien
@@ -77,7 +79,7 @@ Mélange de deux pistes explorées en amont :
 - **Structure d'atelier** : filets marron chaud, étiquettes « tamponnées », boutons en
   capitales et **papier kraft pour tout l'univers du café**.
 
-La librairie vit sur le sable clair, le café sur le kraft. Le logo réunit les deux :
+Le coin librairie vit sur le sable clair, le café sur le kraft. Le logo réunit les deux :
 l'esperluette italique dans un tampon circulaire.
 
 | Rôle | Couleur |

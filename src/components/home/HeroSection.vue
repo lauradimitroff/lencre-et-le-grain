@@ -40,7 +40,7 @@ const facts = [
 
       <div class="hero__inner container">
         <div class="hero__text">
-          <StampLabel>Café de spécialité · Librairie indépendante</StampLabel>
+          <StampLabel>Café de spécialité · Coin librairie</StampLabel>
           <h1 id="hero-title" class="hero__title">
             Un chapitre, <em>un café,</em> et tout le temps qu'il faut.
           </h1>
@@ -52,8 +52,8 @@ const facts = [
             </span>
           </p>
           <div class="hero__actions">
-            <BaseButton to="/librairie">Découvrir la sélection de livres</BaseButton>
-            <BaseButton to="/carte" variant="secondary">Voir la carte</BaseButton>
+            <BaseButton to="/carte">Voir la carte</BaseButton>
+            <BaseButton to="/librairie" variant="secondary">Découvrir les livres</BaseButton>
           </div>
           <OpeningBadge />
         </div>
@@ -97,6 +97,8 @@ const facts = [
 <style scoped>
 .hero {
   padding-bottom: var(--space-6);
+  /* Filet de séparation avec la section café, sur le même fond crème */
+  border-bottom: var(--border-rule) solid var(--color-primary);
 }
 
 /* ---------- Bandeau photo ---------- */

@@ -10,15 +10,15 @@ import { usePageMeta } from '@/composables/usePageMeta'
 usePageMeta({
   title: "L'Encre & le Grain · Café-librairie (boutique fictive)",
   description:
-    "Café de spécialité et librairie indépendante imaginaires : sélection de livres, carte 100 % végétale et accords livre-café. Projet de démonstration pour un portfolio.",
+    "Café de spécialité imaginaire avec un coin librairie : carte 100 % végétale, sélection de livres et accords livre-café. Projet de démonstration pour un portfolio.",
   path: '/',
 })
 </script>
 
 <template>
   <HeroSection />
-  <BookSelection />
   <CafeSection />
+  <BookSelection />
   <SpiritSection />
   <PairingsSection />
   <NewsletterSection />

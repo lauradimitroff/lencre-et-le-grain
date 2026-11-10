@@ -4,7 +4,7 @@
  */
 export const shopInfo = {
   name: "L'Encre & le Grain",
-  tagline: 'Café de spécialité & librairie indépendante',
+  tagline: 'Café de spécialité & coin librairie',
   address: ['12, passage des Lettres', '00000 Ville-sur-Page'],
   phone: '01 23 45 67 89',
   email: 'bonjour@lencre-et-le-grain.example',

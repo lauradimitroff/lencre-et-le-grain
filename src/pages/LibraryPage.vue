@@ -16,7 +16,7 @@ usePageMeta({
 </script>
 
 <template>
-  <PageHeader title-id="library-title" eyebrow="La librairie" crumb="La librairie">
+  <PageHeader title-id="library-title" eyebrow="Le coin librairie" crumb="Le coin librairie">
     <template #title>La sélection <em>d'automne</em></template>
     <p>
       {{ total }} livres pour les soirées qui raccourcissent : sorcières, manoirs, forêts qui

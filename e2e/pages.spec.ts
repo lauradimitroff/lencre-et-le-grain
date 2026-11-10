@@ -43,8 +43,8 @@ test('le menu principal mène aux bonnes pages', async ({ page, isMobile }) => {
   const nav = page.getByRole('navigation', { name: 'Navigation principale' })
 
   for (const [label, path] of [
-    ['La librairie', '/librairie'],
     ['La carte', '/carte'],
+    ['Le coin librairie', '/librairie'],
     ['Notre histoire', '/histoire'],
   ] as const) {
     if (isMobile) await page.getByRole('button', { name: 'Menu', exact: true }).click()

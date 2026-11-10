@@ -7,11 +7,12 @@ export interface NavItem {
 
 /**
  * Chaque rubrique a sa page complète ; l'accueil en présente un aperçu
- * (coups de cœur, plus demandés, résumé de l'histoire).
+ * (plus demandés, coups de cœur, résumé de l'histoire). Le café passe en
+ * premier : c'est l'activité principale, les livres sont un coin librairie..
  */
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', to: '/' },
-  { label: 'La librairie', to: '/librairie' },
   { label: 'La carte', to: '/carte' },
+  { label: 'Le coin librairie', to: '/librairie' },
   { label: 'Notre histoire', to: '/histoire' },
 ]

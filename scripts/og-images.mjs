@@ -40,13 +40,13 @@ const COVERS = [
 const pages = [
   {
     file: 'accueil',
-    eyebrow: 'Café de spécialité · Librairie indépendante',
+    eyebrow: 'Café de spécialité · Coin librairie',
     title: 'Un chapitre, <em>un café,</em> et tout le temps qu’il faut.',
     visual: { photo: PHOTOS.cafe },
   },
   {
     file: 'librairie',
-    eyebrow: 'La librairie',
+    eyebrow: 'Le coin librairie',
     title: 'La sélection <em>d’automne</em>',
     text: 'Fantasy, gothique, romance, BD et jeunesse\u00a0: des livres choisis un par un.',
     visual: { covers: true },

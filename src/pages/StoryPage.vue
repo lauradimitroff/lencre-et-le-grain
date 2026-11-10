@@ -90,7 +90,7 @@ usePageMeta({
 
         <blockquote class="story__quote">
           <p>« On ne vend pas des livres et du café. On vend une heure de calme, et on l'emballe dans du kraft. »</p>
-          <footer>La librairie, à l'ouverture</footer>
+          <footer>L'équipe, à l'ouverture</footer>
         </blockquote>
 
         <section aria-labelledby="story-cafe">
@@ -160,8 +160,8 @@ usePageMeta({
       </section>
 
       <div class="story__actions">
-        <BaseButton to="/librairie">Découvrir la sélection</BaseButton>
-        <BaseButton to="/carte" variant="secondary">Voir la carte du café</BaseButton>
+        <BaseButton to="/carte">Voir la carte du café</BaseButton>
+        <BaseButton to="/librairie" variant="secondary">Découvrir les livres</BaseButton>
       </div>
     </div>
   </article>

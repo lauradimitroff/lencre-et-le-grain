@@ -14,7 +14,7 @@ const total = getBooks().length
     <div class="container selection__inner">
       <SectionHeader
         title-id="selection-title"
-        eyebrow="La librairie"
+        eyebrow="Le coin librairie"
         title="Nos coups de cœur d'automne"
         lead="Sorcières, manoirs, forêts qui murmurent et fantasy douce comme un latte : quelques livres que l'on glisse volontiers entre deux tasses."
       />
