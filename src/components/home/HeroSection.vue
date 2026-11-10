@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BaseButton from '@/components/ui/BaseButton.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
+import OpeningBadge from '@/components/ui/OpeningBadge.vue'
 import StampLabel from '@/components/ui/StampLabel.vue'
 import { lineIcons } from '@/data/icons'
 import { photos } from '@/data/images'
@@ -33,7 +34,7 @@ const facts = [
         :photo="photos.heroCafeInterior"
         :ratio="16 / 9"
         sizes="100vw"
-        :widths="[640, 960, 1440, 1920, 2560]"
+        :widths="[640, 768, 960, 1440, 1920, 2560]"
         priority
       />
 
@@ -52,6 +53,7 @@ const facts = [
             <BaseButton to="/librairie">Découvrir la sélection de livres</BaseButton>
             <BaseButton to="/carte" variant="secondary">Voir la carte</BaseButton>
           </div>
+          <OpeningBadge />
         </div>
 
         <p class="hero__note">

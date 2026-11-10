@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { books } from '@/data/books'
 import { menuItems, menuSections } from '@/data/menu'
-import { getBestSellers, getFeaturedBooks, getMenu, getPairings } from '@/services/catalog'
+import {
+  filterMenuByAllergens,
+  getBestSellers,
+  getFeaturedBooks,
+  getMenu,
+  getPairings,
+} from '@/services/catalog'
 
 const hasUniqueIds = (list: { id: string }[]) => new Set(list.map((i) => i.id)).size === list.length
 
@@ -70,5 +76,23 @@ describe('getFeaturedBooks', () => {
     const featured = getFeaturedBooks()
     expect(featured.length).toBeGreaterThanOrEqual(3)
     expect(featured.length).toBeLessThanOrEqual(4)
+  })
+})
+
+describe('filtre allergènes de la carte', () => {
+  it('ne retire rien sans allergène exclu', () => {
+    expect(filterMenuByAllergens(getMenu(), [])).toEqual(getMenu())
+  })
+
+  it('retire les articles qui contiennent un allergène exclu, et les rubriques vides', () => {
+    const filtered = filterMenuByAllergens(getMenu(), ['gluten', 'fruits-a-coque'])
+    const items = filtered.flatMap((section) => section.items)
+    expect(items.length).toBeGreaterThan(0)
+    for (const item of items) {
+      expect(item.allergens ?? [], item.id).not.toContain('gluten')
+      expect(item.allergens ?? [], item.id).not.toContain('fruits-a-coque')
+    }
+    for (const section of filtered) expect(section.items.length, section.id).toBeGreaterThan(0)
+    expect(items.map((item) => item.id)).toContain('moelleux-sans-gluten')
   })
 })

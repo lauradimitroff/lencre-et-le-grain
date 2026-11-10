@@ -1,7 +1,7 @@
 import { bookCategories, books } from '@/data/books'
 import { menuItems, menuSections } from '@/data/menu'
 import { pairingRecords } from '@/data/pairings'
-import type { Book, MenuItem, MenuSection, MenuSectionId, Pairing } from '@/types/catalog'
+import type { Allergen, Book, MenuItem, MenuSection, MenuSectionId, Pairing } from '@/types/catalog'
 
 /**
  * Point d'accès unique aux données. Les composants ne lisent jamais les
@@ -35,6 +35,25 @@ export function getMenu(sectionIds?: MenuSectionId[]): MenuSectionWithItems[] {
     ...section,
     items: menuItems.filter((item) => item.section === section.id),
   }))
+}
+
+/**
+ * Retire de la carte les articles qui contiennent l'un des allergènes exclus,
+ * puis les rubriques devenues vides.
+ */
+export function filterMenuByAllergens(
+  sections: MenuSectionWithItems[],
+  excluded: Allergen[],
+): MenuSectionWithItems[] {
+  if (excluded.length === 0) return sections
+  return sections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter(
+        (item) => !item.allergens?.some((allergen) => excluded.includes(allergen)),
+      ),
+    }))
+    .filter((section) => section.items.length > 0)
 }
 
 /** Sélection courte pour l'accueil : les articles marqués « bestSeller », boissons puis pâtisseries. */

@@ -12,6 +12,6 @@ export interface NavItem {
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', to: '/' },
   { label: 'La librairie', to: '/librairie' },
-  { label: 'Le café', to: '/carte' },
+  { label: 'La carte', to: '/carte' },
   { label: 'Notre histoire', to: '/histoire' },
 ]

@@ -15,3 +15,23 @@ export const shopInfo = {
     { days: 'Dimanche', hours: '9 h 30 à 18 h' },
   ],
 } as const
+
+/** Ouverture d'une journée, en minutes depuis minuit (heure de Paris). */
+export interface DaySchedule {
+  open: number
+  close: number
+}
+
+/**
+ * Horaires (fictifs) sous forme exploitable, indexés comme Date.getDay() :
+ * 0 = dimanche, 1 = lundi… Un test vérifie qu'ils concordent avec `shopInfo.hours`.
+ */
+export const weeklySchedule: (DaySchedule | null)[] = [
+  { open: 9 * 60 + 30, close: 18 * 60 }, // dimanche
+  null, // lundi : fermé
+  { open: 8 * 60, close: 19 * 60 },
+  { open: 8 * 60, close: 19 * 60 },
+  { open: 8 * 60, close: 19 * 60 },
+  { open: 8 * 60, close: 19 * 60 },
+  { open: 9 * 60, close: 20 * 60 }, // samedi
+]

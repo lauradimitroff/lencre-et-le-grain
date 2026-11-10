@@ -18,7 +18,9 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir,
-      cssCodeSplit: true,
+      // Une seule feuille de style (≈ 12 Ko compressée) : moins d'allers-retours
+      // bloquants qu'une feuille par composant, ce qui compte sur mobile.
+      cssCodeSplit: false,
     },
     ssgOptions: {
       // Une page HTML pré-rendue par route : /librairie -> librairie.html

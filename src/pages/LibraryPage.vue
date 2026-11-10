@@ -11,6 +11,7 @@ usePageMeta({
   description:
     "Toute la sélection d'automne du café-librairie imaginaire : fantasy, gothique, romance, BD et jeunesse, à filtrer par genre. Livres réels, prix indicatifs.",
   path: '/librairie',
+  ogImage: 'librairie',
 })
 </script>
 

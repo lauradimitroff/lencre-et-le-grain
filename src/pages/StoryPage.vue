@@ -29,6 +29,7 @@ usePageMeta({
   description:
     "Comment une ancienne imprimerie de quartier est devenue un café-librairie : l'histoire, imaginée pour ce projet, de L'Encre & le Grain.",
   path: '/histoire',
+  ogImage: 'histoire',
 })
 </script>
 

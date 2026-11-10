@@ -32,24 +32,48 @@ function getObserver(): IntersectionObserver {
   return observer
 }
 
+/*
+ * Les éléments montés pendant la même tâche sont traités ensemble : on mesure
+ * d'abord toutes les positions, puis on modifie les classes. Mesurer et modifier
+ * en alternance forcerait un recalcul de la mise en page pour chaque carte,
+ * ce qui coûte cher sur un téléphone quand la page en contient des dizaines.
+ */
+const pending = new Map<HTMLElement, { delay?: number; always: boolean }>()
+let flushScheduled = false
+
+function flush() {
+  flushScheduled = false
+  const batch = [...pending].filter(([el]) => el.isConnected)
+  pending.clear()
+
+  const viewportHeight = window.innerHeight
+  const toReveal = batch.filter(
+    ([el, { always }]) => always || el.getBoundingClientRect().top >= viewportHeight,
+  )
+
+  for (const [el, { delay }] of toReveal) {
+    if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`)
+    el.classList.add('reveal')
+    getObserver().observe(el)
+  }
+}
+
 export const vReveal: Directive<HTMLElement, number | undefined> = {
   getSSRProps: () => ({}),
   mounted(el, binding) {
     if (typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
+    pending.set(el, { delay: binding.value, always: Boolean(binding.modifiers.always) })
     // On attend la fin de la tâche en cours : lors d'un changement de page, le
     // routeur remet d'abord le défilement en haut, et la position mesurée est la bonne.
-    setTimeout(() => {
-      if (!el.isConnected) return
-      if (!binding.modifiers.always && el.getBoundingClientRect().top < window.innerHeight) return
-
-      if (binding.value) el.style.setProperty('--reveal-delay', `${binding.value}ms`)
-      el.classList.add('reveal')
-      getObserver().observe(el)
-    }, 0)
+    if (!flushScheduled) {
+      flushScheduled = true
+      setTimeout(flush, 0)
+    }
   },
   unmounted(el) {
+    pending.delete(el)
     observer?.unobserve(el)
   },
 }

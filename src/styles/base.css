@@ -159,3 +159,42 @@ a:hover {
 html.has-drawer-open {
   overflow: hidden;
 }
+
+/* ---------- Transitions entre les pages (View Transitions API) ---------- */
+/* L'en-tête et la bannière restent en place ; seul le contenu change */
+.demo-banner {
+  view-transition-name: demo-banner;
+}
+
+.header {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+  animation: page-out 160ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: page-in 360ms var(--ease-out) 60ms both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

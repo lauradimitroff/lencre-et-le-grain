@@ -6,12 +6,14 @@ interface PageMeta {
   description: string
   /** Chemin de la page, ex. « / » ou « /librairie ». */
   path: string
-  image?: string
+  /** Image d'aperçu de partage générée dans public/og/ (npm run og). */
+  ogImage?: 'accueil' | 'librairie' | 'carte' | 'histoire'
 }
 
 /** Titre, description, URL canonique, Open Graph et carte Twitter d'une page. */
-export function usePageMeta({ title, description, path, image = siteConfig.ogImage }: PageMeta) {
+export function usePageMeta({ title, description, path, ogImage = 'accueil' }: PageMeta) {
   const url = path === '/' ? `${siteConfig.url}/` : `${siteConfig.url}${path}`
+  const image = `${siteConfig.url}/og/${ogImage}.jpg`
 
   useHead({
     title,
@@ -26,6 +28,7 @@ export function usePageMeta({ title, description, path, image = siteConfig.ogIma
       { property: 'og:image', content: image },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: title },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
     link: [{ rel: 'canonical', href: url }],

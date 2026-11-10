@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BrandLogo from './BrandLogo.vue'
+import OpeningBadge from '@/components/ui/OpeningBadge.vue'
 import { mainNavigation } from '@/data/navigation'
 import { shopInfo } from '@/data/shop'
 
@@ -40,6 +41,7 @@ const year = new Date().getFullYear()
         <h2 id="footer-hours" class="footer__title">
           Horaires <span class="footer__fiction">fictifs</span>
         </h2>
+        <OpeningBadge tone="dark" class="footer__opening" />
         <dl class="footer__hours">
           <div v-for="slot in shopInfo.hours" :key="slot.days">
             <dt>{{ slot.days }}</dt>
@@ -176,5 +178,8 @@ const year = new Date().getFullYear()
 
 .footer__legal .footer__legal-link:hover {
   color: var(--cream-50);
+}
+.footer__opening {
+  margin-bottom: var(--space-4);
 }
 </style>

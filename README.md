@@ -22,11 +22,20 @@ menu mène directement à ces pages, pré-rendues comme l'accueil :
 
 - [`/librairie`](https://lencre-et-le-grain.vercel.app/librairie) : toute la sélection de livres,
   avec filtres par genre, détails et prix indicatifs
-- [`/carte`](https://lencre-et-le-grain.vercel.app/carte) : la carte complète du café
+- [`/carte`](https://lencre-et-le-grain.vercel.app/carte) : la carte complète du café, avec un
+  filtre allergènes (« Sans gluten », « Sans fruits à coque », « Sans soja »)
 - [`/histoire`](https://lencre-et-le-grain.vercel.app/histoire) : l'histoire (inventée) du lieu
 - [`/credits`](https://lencre-et-le-grain.vercel.app/credits) : photos, polices et sources
 
 Une page 404 sert les adresses inconnues.
+
+Quelques détails :
+
+- **Badge « Ouvert maintenant / Fermé »** dans le hero et le pied de page, calculé dans le
+  navigateur à l'heure de Paris à partir des horaires (fictifs), et mis à jour chaque minute
+- **Transitions douces entre les pages** avec la View Transitions API ; l'en-tête reste en place.
+  Rien ne change dans les navigateurs qui ne la gèrent pas ou en mouvement réduit
+- **Menu mobile en panneau latéral**, avec focus gardé dans le panneau
 
 ## Stack et choix techniques
 
@@ -128,12 +137,18 @@ d'auteur, ne sont pas reproduites. Le site le précise sous la sélection et dan
 ## SEO et performances
 
 - HTML pré-rendu avec titre, méta-description, canonique et Open Graph uniques par page
+- **Image d'aperçu de partage propre à chaque page** (1200 × 630, dans `public/og/`), générée
+  par `npm run og` : un modèle HTML aux couleurs du site rendu par le Chromium de Playwright.
+  Les images sont versionnées, le build n'a donc pas besoin de navigateur
 - `sitemap.xml` et `robots.txt` générés à partir des pages réellement produites
 - Pages d'erreur marquées `noindex`
 - Images Unsplash redimensionnées par leur CDN (`srcset`, AVIF/WebP automatique),
   dimensions fixées pour éviter les décalages de mise en page, `loading="lazy"` sauf pour le hero
 - Polices auto-hébergées en sous-ensembles latin, sans appel à Google Fonts
-- Aucune bibliothèque d'animation : une directive d'une trentaine de lignes et du CSS
+- Aucune bibliothèque d'animation : une directive d'une cinquantaine de lignes et du CSS. Elle
+  mesure les éléments par lots pour éviter les recalculs de mise en page en série (le temps de
+  blocage de `/librairie` sur mobile est passé de 710 ms à 0)
+- Une seule feuille de style pour tout le site (≈ 12 Ko compressée), plutôt qu'une par composant
 
 ## Tests et intégration continue
 
@@ -149,8 +164,11 @@ d'auteur, ne sont pas reproduites. Le site le précise sous la sélection et dan
 - **GitHub Actions** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) à chaque push et
   pull request : types, tests unitaires, build, tests Playwright, puis **Lighthouse CI**
   ([`lighthouserc.json`](lighthouserc.json)) qui bloque si l'accessibilité passe sous 95, ou les
-  bonnes pratiques et le SEO sous 90. En local, les quatre pages principales obtiennent entre
-  99 et 100 dans chaque catégorie (profil ordinateur).
+  bonnes pratiques et le SEO sous 90. Mesure en profil mobile (4G lente simulée, processeur
+  ralenti) : 100 en accessibilité, bonnes pratiques et SEO sur les quatre pages principales, de 82
+  à 88 en performance, sans aucun décalage de mise en page. L'essentiel de l'écart vient de
+  Newsreader : la version avec taille optique (≈ 280 Ko pour le romain et l'italique) est gardée
+  volontairement, car elle donne leur finesse aux grands titres.
 
 Pour lancer les tests de bout en bout la première fois : `npx playwright install chromium`.
 
@@ -172,6 +190,7 @@ npm install
 | `npm run build` | Vérification TypeScript puis génération statique dans `dist/` |
 | `npm run preview` | Sert le dossier `dist/` en local pour tester le build |
 | `npm test` | Lance les tests unitaires une fois |
+| `npm run og` | Régénère les images d'aperçu de partage dans `public/og/` |
 | `npm run test:e2e` | Construit le site puis lance les tests Playwright (ordinateur et mobile) |
 | `npm run test:watch` | Tests en mode surveillance |
 | `npm run typecheck` | Vérification TypeScript seule |

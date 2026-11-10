@@ -10,7 +10,7 @@ import { photos } from '@/data/images'
       <figure class="spirit__main" v-reveal>
         <ResponsiveImage
           :photo="photos.vintageBookStacks"
-          :ratio="4 / 5"
+          :ratio="1"
           sizes="(min-width: 56rem) 50vw, 100vw"
           :widths="[480, 768, 1080]"
         />
@@ -115,52 +115,28 @@ import { photos } from '@/data/images'
   letter-spacing: 0.04em;
 }
 
-.spirit__inset {
-  width: 70%;
-  justify-self: end;
-  margin-top: calc(var(--space-8) * -1);
-  border: 6px solid var(--color-bg-alt);
-  box-shadow: var(--shadow-lift);
+/* Mobile : photo en bandeau, moins haute que le format carré d'origine */
+.spirit__main :deep(img) {
+  display: block;
+  aspect-ratio: 3 / 2 !important;
 }
 
-.spirit__wide {
-  display: none;
-}
-
-/* Mise en page asymétrique, façon magazine */
+/* Grand écran : la photo prend exactement la hauteur du texte */
 @media (min-width: 56rem) {
   .spirit__grid {
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto;
-    gap: var(--space-6) var(--space-5);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-8);
+    align-items: stretch;
   }
 
-  .spirit__main {
-    grid-column: 1 / 7;
-    grid-row: 1 / 3;
-    align-self: start;
-  }
-
-  .spirit__inset {
-    grid-column: 5 / 8;
-    grid-row: 2;
-    width: auto;
-    align-self: end;
-    margin: 0 0 calc(var(--space-7) * -1);
-    z-index: 1;
+  .spirit__main :deep(img) {
+    height: 100%;
+    min-height: 22rem;
+    aspect-ratio: auto !important;
   }
 
   .spirit__text {
-    grid-column: 8 / 13;
-    grid-row: 1;
-    padding-top: var(--space-6);
-  }
-
-  .spirit__wide {
-    display: block;
-    grid-column: 9 / 13;
-    grid-row: 2;
-    align-self: end;
+    padding-block: var(--space-4);
   }
 }
 </style>
