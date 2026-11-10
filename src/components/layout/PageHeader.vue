@@ -72,6 +72,11 @@ withDefaults(
   list-style: none;
 }
 
+/* Le caramel n'est pas assez contrasté sur le kraft : on passe au marron */
+.page-header--kraft .eyebrow {
+  color: var(--color-primary);
+}
+
 .page-header--kraft .page-header__crumbs ol {
   color: var(--color-cafe-ink);
 }

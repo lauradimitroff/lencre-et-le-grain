@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BookCover from '@/components/books/BookCover.vue'
+import PairingQuiz from '@/components/home/PairingQuiz.vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import { getPairings } from '@/services/catalog'
 import { formatPrice } from '@/utils/format'
@@ -49,6 +50,8 @@ const pairings = getPairings()
           </article>
         </li>
       </ul>
+
+      <PairingQuiz id="quiz" />
     </div>
   </section>
 </template>

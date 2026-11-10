@@ -11,3 +11,9 @@ dist
 .idea
 .claude
 coverage
+
+# Playwright
+test-results
+playwright-report
+blob-report
+.lighthouseci

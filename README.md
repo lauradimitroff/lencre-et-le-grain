@@ -1,5 +1,7 @@
 # L'Encre & le Grain
 
+[![CI](https://github.com/lauradimitroff/lencre-et-le-grain/actions/workflows/ci.yml/badge.svg)](https://github.com/lauradimitroff/lencre-et-le-grain/actions/workflows/ci.yml)
+
 Site vitrine d'un **café-librairie fictif**, réalisé pour un portfolio de développeuse web.
 Café de spécialité, librairie indépendante, carte 100 % végétale et accords « livre + café ».
 
@@ -14,8 +16,8 @@ Café de spécialité, librairie indépendante, carte 100 % végétale et accord
 ## Format
 
 L'accueil est une **page unique** : hero en photo pleine largeur, quatre coups de cœur de la
-librairie, extrait de la carte (« les plus demandés »), esprit du lieu, accords livre + café,
-newsletter de démonstration et pied de page. Chaque aperçu renvoie à sa page complète, et le
+librairie, extrait de la carte (« les plus demandés »), esprit du lieu, accords livre + café avec
+un petit quiz (« Quel livre avec quel café ? »), newsletter de démonstration et pied de page. Chaque aperçu renvoie à sa page complète, et le
 menu mène directement à ces pages, pré-rendues comme l'accueil :
 
 - [`/librairie`](https://lencre-et-le-grain.vercel.app/librairie) : toute la sélection de livres,
@@ -33,7 +35,9 @@ Une page 404 sert les adresses inconnues.
 - **Vue Router 4**
 - **vite-ssg** pour pré-rendre chaque route en HTML statique au build
 - **@unhead/vue** pour le titre, les méta-descriptions, la balise canonique et Open Graph
-- **Vitest** + **@vue/test-utils** pour les tests
+- **Vitest** + **@vue/test-utils** pour les tests unitaires
+- **Playwright** + **axe-core** pour les tests de bout en bout et d'accessibilité
+- **GitHub Actions** et **Lighthouse CI** pour l'intégration continue
 - Polices auto-hébergées avec **Fontsource** : Newsreader (titres) et Instrument Sans (texte)
 
 ### Pourquoi Vue 3 + Vite + vite-ssg plutôt que Nuxt ?
@@ -97,7 +101,8 @@ src/
 ├── types/        Types TypeScript du catalogue
 └── utils/        Formatage des prix, pluriels
 scripts/seo-files.ts   Génère sitemap.xml et robots.txt après le build
-tests/                 Tests Vitest
+tests/                 Tests unitaires Vitest
+e2e/                   Tests de bout en bout Playwright (parcours, quiz, accessibilité)
 ```
 
 **Données séparées de l'affichage.** Les composants ne lisent jamais `src/data/` directement :
@@ -130,6 +135,25 @@ d'auteur, ne sont pas reproduites. Le site le précise sous la sélection et dan
 - Polices auto-hébergées en sous-ensembles latin, sans appel à Google Fonts
 - Aucune bibliothèque d'animation : une directive d'une trentaine de lignes et du CSS
 
+## Tests et intégration continue
+
+- **Tests unitaires (Vitest)** : données du catalogue (carte végétale, identifiants, prix),
+  filtres, formulaire, fichiers SEO et logique du quiz, testée sur toutes les combinaisons
+  de réponses.
+- **Tests de bout en bout (Playwright)** sur la version pré-rendue, en format ordinateur et
+  mobile : chaque page répond sans erreur JavaScript, le menu mène aux bonnes pages, les filtres
+  fonctionnent, aucune page ne déborde, et le quiz se joue à la souris comme au clavier
+  (focus déplacé à chaque question).
+- **Accessibilité automatique (axe-core)** : règles WCAG 2.1 A et AA sur chaque page et sur le
+  résultat du quiz. C'est ce test qui a repéré un contraste insuffisant sur l'en-tête de la carte.
+- **GitHub Actions** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) à chaque push et
+  pull request : types, tests unitaires, build, tests Playwright, puis **Lighthouse CI**
+  ([`lighthouserc.json`](lighthouserc.json)) qui bloque si l'accessibilité passe sous 95, ou les
+  bonnes pratiques et le SEO sous 90. En local, les quatre pages principales obtiennent entre
+  99 et 100 dans chaque catégorie (profil ordinateur).
+
+Pour lancer les tests de bout en bout la première fois : `npx playwright install chromium`.
+
 ## Installation et commandes
 
 Prérequis : **Node.js 20 ou plus** (un fichier `.nvmrc` est fourni).
@@ -147,7 +171,8 @@ npm install
 | `npm run dev` | Serveur de développement sur http://localhost:5173 |
 | `npm run build` | Vérification TypeScript puis génération statique dans `dist/` |
 | `npm run preview` | Sert le dossier `dist/` en local pour tester le build |
-| `npm test` | Lance les tests une fois |
+| `npm test` | Lance les tests unitaires une fois |
+| `npm run test:e2e` | Construit le site puis lance les tests Playwright (ordinateur et mobile) |
 | `npm run test:watch` | Tests en mode surveillance |
 | `npm run typecheck` | Vérification TypeScript seule |
 
