@@ -19,10 +19,13 @@ const font = (pkg, file) =>
     join(root, 'node_modules', '@fontsource-variable', pkg, 'files', file),
   ).toString('base64')}`
 
-const photo = (id) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1000&h=1260&q=80`
+/* fpX : point de recadrage horizontal (0 à 1) quand le sujet n'est pas centré */
+const photo = (id, fpX) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1000&h=1260&q=80` +
+  (fpX ? `&crop=focalpoint&fp-x=${fpX}&fp-y=0.5` : '')
 
 const PHOTOS = {
+  latte: photo('1760175445000-0e01e193d1cd', 0.66),
   cafe: photo('1521017432531-fbd92d768814'),
   books: photo('1550399105-05c4a7641b02'),
   pourOver: photo('1442512595331-e89e73853f31'),
@@ -42,7 +45,7 @@ const pages = [
     file: 'accueil',
     eyebrow: 'Café de spécialité · Coin librairie',
     title: 'Un chapitre, <em>un café,</em> et tout le temps qu’il faut.',
-    visual: { photo: PHOTOS.cafe },
+    visual: { photo: PHOTOS.latte },
   },
   {
     file: 'librairie',

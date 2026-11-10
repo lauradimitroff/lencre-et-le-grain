@@ -31,9 +31,9 @@ const facts = [
     <div class="hero__banner">
       <ResponsiveImage
         class="hero__image"
-        :photo="photos.heroCafeInterior"
-        :ratio="16 / 9"
-        sizes="100vw"
+        :photo="photos.heroLatte"
+        :ratio="3 / 2"
+        sizes="(max-aspect-ratio: 3/2) 150vh, 100vw"
         :widths="[640, 768, 960, 1440, 1920, 2560]"
         priority
       />
@@ -124,7 +124,7 @@ const facts = [
   height: 100%;
   aspect-ratio: auto !important;
   object-fit: cover;
-  object-position: 60% 50%;
+  object-position: 72% 50%;
 }
 
 .hero__inner {
@@ -192,10 +192,13 @@ const facts = [
   letter-spacing: 0.05em;
 }
 
-/* Mobile : l'encadré « Au filtre » passe en haut à droite, sur la photo */
+/*
+ * Encadré « Au filtre » : masqué sur téléphone pour laisser voir la tasse
+ * au-dessus de l'encart ; en haut à droite de la photo sur tablette.
+ */
 .hero__note {
   order: -1;
-  display: grid;
+  display: none;
   gap: var(--space-1);
   justify-self: end;
   max-width: 13rem;
@@ -315,6 +318,10 @@ const facts = [
 
   .hero__text :deep(.stamp) {
     display: inline-flex;
+  }
+
+  .hero__note {
+    display: grid;
   }
 
   .hero__facts {

@@ -15,11 +15,22 @@ export interface Photo {
 }
 
 export const photos = {
+  heroLatte: {
+    id: '1760175445000-0e01e193d1cd',
+    alt: 'Une tasse de café au latte art en forme de feuille, sur sa soucoupe avec une cuillère, posée sur une table ronde en bois clair.',
+    color: '#3b2419',
+    usage: 'Accueil, grande image d’ouverture',
+    credit: {
+      author: 'nameless 3791',
+      authorUrl: 'https://unsplash.com/@unidentifieduser',
+      photoUrl: 'https://unsplash.com/photos/une-tasse-de-cafe-avec-du-latte-art-sur-une-soucoupe-5nYLHK68TLM',
+    },
+  },
   heroCafeInterior: {
     id: '1521017432531-fbd92d768814',
     alt: 'Salle de café lumineuse aux tables en bois, avec un comptoir, des étagères garnies et des revues posées sur une table.',
     color: '#8c8478',
-    usage: 'Accueil, grande image d’ouverture',
+    usage: 'Image de partage de la page Contact',
     credit: {
       author: 'Petr Sevcovic',
       authorUrl: 'https://unsplash.com/@sevcovic23',
