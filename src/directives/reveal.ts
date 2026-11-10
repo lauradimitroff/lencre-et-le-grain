@@ -8,6 +8,8 @@ import type { Directive } from 'vue'
  * - Réversible : l'élément s'efface quand il quitte l'écran et réapparaît au
  *   retour, en glissant depuis le bord par lequel il revient.
  * La valeur optionnelle est un délai en millisecondes : v-reveal="120".
+ * Le modificateur .always anime aussi un élément déjà visible au chargement
+ * (à réserver aux petits éléments, juste sous le hero par exemple).
  */
 let observer: IntersectionObserver | undefined
 
@@ -35,11 +37,17 @@ export const vReveal: Directive<HTMLElement, number | undefined> = {
   mounted(el, binding) {
     if (typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    if (el.getBoundingClientRect().top < window.innerHeight) return
 
-    if (binding.value) el.style.setProperty('--reveal-delay', `${binding.value}ms`)
-    el.classList.add('reveal')
-    getObserver().observe(el)
+    // On attend la fin de la tâche en cours : lors d'un changement de page, le
+    // routeur remet d'abord le défilement en haut, et la position mesurée est la bonne.
+    setTimeout(() => {
+      if (!el.isConnected) return
+      if (!binding.modifiers.always && el.getBoundingClientRect().top < window.innerHeight) return
+
+      if (binding.value) el.style.setProperty('--reveal-delay', `${binding.value}ms`)
+      el.classList.add('reveal')
+      getObserver().observe(el)
+    }, 0)
   },
   unmounted(el) {
     observer?.unobserve(el)

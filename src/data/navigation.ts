@@ -6,13 +6,12 @@ export interface NavItem {
 }
 
 /**
- * L'accueil reste une page unique (sections atteintes par ancres) ;
- * seule la carte complète du café a sa propre page.
+ * Chaque rubrique a sa page complète ; l'accueil en présente un aperçu
+ * (coups de cœur, plus demandés, résumé de l'histoire).
  */
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', to: '/' },
-  { label: 'La librairie', to: { path: '/', hash: '#librairie' } },
-  { label: 'Le café', to: { path: '/', hash: '#cafe' } },
-  { label: 'La carte', to: '/carte' },
-  { label: 'Notre histoire', to: { path: '/', hash: '#histoire' } },
+  { label: 'La librairie', to: '/librairie' },
+  { label: 'Le café', to: '/carte' },
+  { label: 'Notre histoire', to: '/histoire' },
 ]

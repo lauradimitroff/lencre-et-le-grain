@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { books } from '@/data/books'
 import { menuItems, menuSections } from '@/data/menu'
-import { getBestSellers, getMenu, getPairings } from '@/services/catalog'
+import { getBestSellers, getFeaturedBooks, getMenu, getPairings } from '@/services/catalog'
 
 const hasUniqueIds = (list: { id: string }[]) => new Set(list.map((i) => i.id)).size === list.length
 
@@ -62,5 +62,13 @@ describe('typographie', () => {
     for (const text of texts.filter((value) => typeof value === 'string')) {
       expect(text).not.toContain('\u2014')
     }
+  })
+})
+
+describe('getFeaturedBooks', () => {
+  it("met en avant 3 ou 4 livres sur l'accueil", () => {
+    const featured = getFeaturedBooks()
+    expect(featured.length).toBeGreaterThanOrEqual(3)
+    expect(featured.length).toBeLessThanOrEqual(4)
   })
 })

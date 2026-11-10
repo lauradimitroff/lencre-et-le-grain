@@ -8,8 +8,7 @@ const props = withDefaults(
     to?: RouteLocationRaw
     /** Lien externe. */
     href?: string
-    /** « inverse » et « inverse-outline » : pour un fond sombre (photo du hero). */
-    variant?: 'primary' | 'secondary' | 'inverse' | 'inverse-outline'
+    variant?: 'primary' | 'secondary'
     type?: 'button' | 'submit'
   }>(),
   { variant: 'primary', type: 'button', to: undefined, href: undefined },
@@ -78,27 +77,5 @@ const tag = computed(() => (props.to ? 'RouterLink' : props.href ? 'a' : 'button
 .btn--secondary:hover {
   background: var(--color-library);
   color: var(--color-primary);
-}
-.btn--inverse {
-  border-color: var(--cream-50);
-  background: var(--cream-50);
-  color: var(--color-primary);
-}
-
-.btn--inverse:hover {
-  border-color: var(--mint-100);
-  background: var(--mint-100);
-  color: var(--color-primary);
-}
-
-.btn--inverse-outline {
-  border-color: var(--cream-50);
-  background: transparent;
-  color: var(--cream-50);
-}
-
-.btn--inverse-outline:hover {
-  background: rgb(252 250 245 / 0.14);
-  color: var(--cream-50);
 }
 </style>

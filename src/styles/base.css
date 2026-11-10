@@ -78,8 +78,8 @@ a:hover {
 }
 
 ::selection {
-  background: var(--mint-300);
-  color: var(--forest-900);
+  background: var(--kraft-400);
+  color: var(--brown-900);
 }
 
 /* Focus visible et cohérent partout */

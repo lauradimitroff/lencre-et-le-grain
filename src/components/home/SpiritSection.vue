@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseButton from '@/components/ui/BaseButton.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
 import { photos } from '@/data/images'
 </script>
@@ -26,16 +27,13 @@ import { photos } from '@/data/images'
             hautes fenêtres et son parquet taché d'encre. Nous avons gardé les établis, poncé le
             comptoir et installé une machine à espresso là où tournait la presse.
           </p>
-          <p>
-            Aujourd'hui, les livres occupent les murs et le café occupe le centre. On peut venir
-            pour l'un ou pour l'autre, mais on reste presque toujours pour les deux. Ici, personne
-            ne vous presse : la table près de la fenêtre est à celle ou celui qui l'a trouvée.
-          </p>
         </div>
         <blockquote class="spirit__quote">
           <p>« On ne vend pas des livres et du café. On vend une heure de calme, et on l'emballe dans du kraft. »</p>
-          <footer>La librairie, à l'ouverture (histoire fictive)</footer>
         </blockquote>
+        <div>
+          <BaseButton to="/histoire" variant="secondary">Lire notre histoire</BaseButton>
+        </div>
       </div>
     </div>
   </section>

@@ -49,7 +49,7 @@ withDefaults(
 .section-header__lead {
   max-width: 54ch;
   color: var(--color-text-muted);
-  font-size: var(--text-lg);
-  line-height: 1.55;
+  font-size: var(--text-lead);
+  line-height: 1.6;
 }
 </style>

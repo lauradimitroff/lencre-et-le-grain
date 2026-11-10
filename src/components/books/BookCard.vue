@@ -6,7 +6,16 @@ import { getBookCategories } from '@/services/catalog'
 import { formatPrice } from '@/utils/format'
 import type { Book } from '@/types/catalog'
 
-const props = defineProps<{ book: Book }>()
+const props = withDefaults(
+  defineProps<{
+    book: Book
+    /** Version courte (accueil) : titre, auteur et résumé, sans genre, détails ni prix. */
+    compact?: boolean
+    /** Niveau du titre de la fiche selon la page (h2 sous un h1, h3 sous un h2). */
+    level?: 2 | 3
+  }>(),
+  { compact: false, level: 3 },
+)
 
 const meta = computed(() =>
   [props.book.publisher, props.book.year, props.book.pages && `${props.book.pages} pages`]
@@ -20,22 +29,24 @@ const categoryLabel = computed(
 </script>
 
 <template>
-  <article class="book-card">
+  <article class="book-card" :class="{ 'book-card--compact': compact }">
     <BookCover :book="book" class="book-card__cover" />
     <div class="book-card__body">
-      <p class="book-card__tags">
+      <p v-if="!compact" class="book-card__tags">
         <StampLabel>{{ categoryLabel }}</StampLabel>
-        <StampLabel v-if="book.isNew" tone="forest">Nouveauté</StampLabel>
+        <StampLabel v-if="book.isNew" tone="brown">Nouveauté</StampLabel>
       </p>
-      <h3 class="book-card__title">{{ book.title }}</h3>
+      <component :is="`h${level}`" class="book-card__title">{{ book.title }}</component>
       <p v-if="book.series" class="book-card__series">{{ book.series }}</p>
       <p class="book-card__author">{{ book.author }}</p>
       <p class="book-card__summary">{{ book.summary }}</p>
-      <p class="book-card__meta">{{ meta }}</p>
-      <p class="book-card__footer">
-        <span class="book-card__price">{{ formatPrice(book.price) }}</span>
-        <span class="book-card__availability">Disponible en boutique</span>
-      </p>
+      <template v-if="!compact">
+        <p class="book-card__meta">{{ meta }}</p>
+        <p class="book-card__footer">
+          <span class="book-card__price">{{ formatPrice(book.price) }}</span>
+          <span class="book-card__availability">Disponible en boutique</span>
+        </p>
+      </template>
     </div>
   </article>
 </template>
@@ -127,9 +138,22 @@ const categoryLabel = computed(
   font-size: var(--text-xs);
 }
 
+/* Version courte : le résumé reste visible partout, limité à quatre lignes */
+.book-card--compact .book-card__summary {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
 @media (min-width: 40rem) {
   .book-card__summary {
     display: block;
+  }
+
+  .book-card--compact .book-card__summary {
+    display: -webkit-box;
   }
 }
 </style>

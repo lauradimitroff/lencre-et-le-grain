@@ -63,7 +63,7 @@ withDefaults(
 </template>
 
 <style scoped>
-/* Univers café : fiche kraft encadrée de vert forêt */
+/* Univers café : fiche kraft encadrée de marron */
 .menu-card {
   display: grid;
   gap: var(--space-6);

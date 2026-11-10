@@ -26,7 +26,8 @@ export const books: Book[] = [
     pages: 352,
     summary:
       "Viv, une orque mercenaire, range son épée pour ouvrir le tout premier café de la ville de Thune. Une fantasy douce et réconfortante.",
-    cover: { background: '#d8c3a0', ink: '#1c3a2e', motif: 'steam' },
+    cover: { background: '#d8c3a0', ink: '#4e3020', motif: 'steam' },
+    featured: true,
   },
   {
     id: 'mexican-gothic',
@@ -40,6 +41,7 @@ export const books: Book[] = [
     summary:
       'Mexique, 1950. Noemí rejoint sa cousine dans un manoir isolé des montagnes, où la famille de son nouvel époux semble cacher quelque chose de pourri.',
     cover: { background: '#3d2a1c', ink: '#d8c3a0', motif: 'arches' },
+    featured: true,
   },
   {
     id: 'falling-like-leaves',
@@ -66,7 +68,7 @@ export const books: Book[] = [
     pages: 384,
     summary:
       'Marra, la plus discrète des princesses, décide de tuer le prince qui fait souffrir sa sœur. Avec elle : une sorcière des poussières et un chien fait d’os.',
-    cover: { background: '#24473a', ink: '#e3f1ea', motif: 'leaf' },
+    cover: { background: '#62402c', ink: '#f8eee2', motif: 'leaf' },
   },
   {
     id: 'gallant',
@@ -79,7 +81,7 @@ export const books: Book[] = [
     pages: 376,
     summary:
       "Orpheline et muette, Olivia reçoit une lettre qui l'appelle à Gallant, la demeure de sa famille. Au fond du jardin, un mur sépare le monde des vivants de celui des morts.",
-    cover: { background: '#1c3a2e', ink: '#bfddd0', motif: 'arches' },
+    cover: { background: '#4e3020', ink: '#f3e3d0', motif: 'arches' },
   },
   {
     id: 'quand-vient-la-sorciere',
@@ -94,6 +96,7 @@ export const books: Book[] = [
       "Cordelia vit sous l'emprise de sa mère, une sorcière qui a jeté son dévolu sur un riche propriétaire. Un conte gothique, prix Locus 2025.",
     cover: { background: '#f6f0e4', ink: '#3d2a1c', motif: 'sun' },
     isNew: true,
+    featured: true,
   },
   {
     id: 'sorciere-thornfield',
@@ -106,7 +109,7 @@ export const books: Book[] = [
     pages: 320,
     summary:
       'Jane Aire enseigne la botanique et un peu de magie à Lowood, jusqu’à ce que M. Rochester l’appelle à Thornfield Hall, menacé par une force surnaturelle.',
-    cover: { background: '#e3f1ea', ink: '#1c3a2e', motif: 'arches' },
+    cover: { background: '#f8eee2', ink: '#4e3020', motif: 'arches' },
   },
   {
     id: 'mon-ex-maledictions',
@@ -119,7 +122,7 @@ export const books: Book[] = [
     pages: 300,
     summary:
       "Vivienne, sorcière, a maudit son ex un soir de chagrin. Neuf ans plus tard, il revient à Graves Glen et le sort se réveille avec lui.",
-    cover: { background: '#bfddd0', ink: '#6e4b32', motif: 'waves' },
+    cover: { background: '#f3e3d0', ink: '#6e4b32', motif: 'waves' },
   },
   {
     id: 'witch-hazel-house',
@@ -132,7 +135,7 @@ export const books: Book[] = [
     pages: 304,
     summary:
       'Thé, chats et soirées au coin du feu : Lark croit trouver la paix au manoir de Witch Hazel House, jusqu’à une séance de spiritisme qui tourne mal.',
-    cover: { background: '#dfe5e1', ink: '#24473a', motif: 'leaf' },
+    cover: { background: '#ead7c0', ink: '#62402c', motif: 'leaf' },
   },
   {
     id: 'neuvieme-maison',
@@ -146,7 +149,7 @@ export const books: Book[] = [
     pages: 602,
     summary:
       "Parce qu'elle voit les fantômes, Alex Stern décroche une place à Yale avec une mission : surveiller les rites occultes des sociétés secrètes de l'université.",
-    cover: { background: '#2e5544', ink: '#f6f0e4', motif: 'grid' },
+    cover: { background: '#8c5230', ink: '#f6f0e4', motif: 'grid' },
   },
   {
     id: 'portes-perdues',
@@ -160,7 +163,7 @@ export const books: Book[] = [
     pages: 194,
     summary:
       'Dans le pensionnat d’Eleanor West vivent des enfants revenus de mondes magiques. Quand l’un d’eux est retrouvé mort, les autres doivent trouver le coupable.',
-    cover: { background: '#e2d3b8', ink: '#1c3a2e', motif: 'arches' },
+    cover: { background: '#e2d3b8', ink: '#4e3020', motif: 'arches' },
   },
   {
     id: 'invite-pas-la-foret',
@@ -173,7 +176,7 @@ export const books: Book[] = [
     pages: 320,
     summary:
       'Andrew écrit des contes macabres et se réfugie dans la forêt derrière son pensionnat. Un roman sombre et poétique sur ce qui grandit entre les arbres.',
-    cover: { background: '#1c3a2e', ink: '#d8c3a0', motif: 'leaf' },
+    cover: { background: '#4e3020', ink: '#d8c3a0', motif: 'leaf' },
   },
   {
     id: 'jusqua-leur-dernier-souffle',
@@ -186,7 +189,7 @@ export const books: Book[] = [
     pages: 608,
     summary:
       'Filleule du dieu de la Mort, Hazel sait d’un toucher de quel mal souffrent ses patients. À la cour, elle doit choisir : sauver un roi marqué, ou l’achever.',
-    cover: { background: '#f1f8f4', ink: '#3d2a1c', motif: 'steam' },
+    cover: { background: '#faf3ea', ink: '#3d2a1c', motif: 'steam' },
     isNew: true,
   },
   {
@@ -228,7 +231,8 @@ export const books: Book[] = [
     pages: 253,
     summary:
       "Quand le Sorcier Cochon disparaît, Bea part à sa recherche avec Cad pour protéger la Flamme éternelle qui tient l'obscurité à distance.",
-    cover: { background: '#24473a', ink: '#d8c3a0', motif: 'sun' },
+    cover: { background: '#62402c', ink: '#d8c3a0', motif: 'sun' },
+    featured: true,
   },
   {
     id: 'grimoire-noir',
@@ -241,7 +245,7 @@ export const books: Book[] = [
     pages: 288,
     summary:
       'À Blackwell, seule ville où la sorcellerie est permise, Bucky, 15 ans, enquête lui-même sur l’enlèvement de sa petite sœur.',
-    cover: { background: '#3d2a1c', ink: '#bfddd0', motif: 'grid' },
+    cover: { background: '#3d2a1c', ink: '#f3e3d0', motif: 'grid' },
   },
   {
     id: 'paix-a-mon-ame',
@@ -253,6 +257,6 @@ export const books: Book[] = [
     year: 2023,
     summary:
       'Un roman graphique de sorcières signé Sweeney Boo, aux couleurs d’Halloween, entre amitié, magie et secrets enfouis.',
-    cover: { background: '#bfddd0', ink: '#1c3a2e', motif: 'sun' },
+    cover: { background: '#f3e3d0', ink: '#4e3020', motif: 'sun' },
   },
 ]

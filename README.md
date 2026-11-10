@@ -13,13 +13,18 @@ Café de spécialité, librairie indépendante, carte 100 % végétale et accord
 
 ## Format
 
-L'accueil est une **page unique** : bandeau de démonstration, hero en photo pleine largeur, sélection de livres, extrait de la
-carte (« les plus demandés »), esprit du lieu, accords livre + café, newsletter de démonstration
-et pied de page. La navigation y mène par ancres (`/#librairie`, `/#cafe`, `/#histoire`).
+L'accueil est une **page unique** : hero en photo pleine largeur, quatre coups de cœur de la
+librairie, extrait de la carte (« les plus demandés »), esprit du lieu, accords livre + café,
+newsletter de démonstration et pied de page. Chaque aperçu renvoie à sa page complète, et le
+menu mène directement à ces pages, pré-rendues comme l'accueil :
 
-La **carte complète du café** a sa propre page, [`/carte`](https://lencre-et-le-grain.vercel.app/carte),
-pré-rendue comme l'accueil, tout comme la page [`/credits`](https://lencre-et-le-grain.vercel.app/credits)
-(photos, polices, sources). Une page 404 complète l'ensemble.
+- [`/librairie`](https://lencre-et-le-grain.vercel.app/librairie) : toute la sélection de livres,
+  avec filtres par genre, détails et prix indicatifs
+- [`/carte`](https://lencre-et-le-grain.vercel.app/carte) : la carte complète du café
+- [`/histoire`](https://lencre-et-le-grain.vercel.app/histoire) : l'histoire (inventée) du lieu
+- [`/credits`](https://lencre-et-le-grain.vercel.app/credits) : photos, polices et sources
+
+Une page 404 sert les adresses inconnues.
 
 ## Stack et choix techniques
 
@@ -53,17 +58,18 @@ Mélange de deux pistes explorées en amont :
 
 - **Base éditoriale** : nom, palette lumineuse, Newsreader en italique pour l'esperluette,
   ombres légères, filtres en pilule.
-- **Structure d'atelier** : filets vert forêt, étiquettes « tamponnées », boutons en
+- **Structure d'atelier** : filets marron chaud, étiquettes « tamponnées », boutons en
   capitales et **papier kraft pour tout l'univers du café**.
 
-La librairie vit sur le vert d'eau, le café sur le kraft. Le logo réunit les deux :
+La librairie vit sur le sable clair, le café sur le kraft. Le logo réunit les deux :
 l'esperluette italique dans un tampon circulaire.
 
 | Rôle | Couleur |
 | --- | --- |
-| Vert d'eau (principale) | `#BFDDD0` / `#E3F1EA` |
+| Sable clair (librairie, accents clairs) | `#F3E3D0` |
 | Ivoire / crème (fonds) | `#FCFAF5` / `#F6F0E4` |
-| Vert forêt (contraste) | `#1C3A2E` |
+| Marron chaud foncé (principale, contraste) | `#4E3020` |
+| Caramel (accents : accroches, italiques, prix) | `#8C5230` |
 | Kraft (univers café) | `#D8C3A0` |
 | Brun café / torréfié | `#6E4B32` / `#3D2A1C` |
 

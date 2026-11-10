@@ -7,9 +7,19 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/HomePage.vue'),
   },
   {
+    path: '/librairie',
+    name: 'library',
+    component: () => import('@/pages/LibraryPage.vue'),
+  },
+  {
     path: '/carte',
     name: 'menu',
     component: () => import('@/pages/MenuPage.vue'),
+  },
+  {
+    path: '/histoire',
+    name: 'story',
+    component: () => import('@/pages/StoryPage.vue'),
   },
   {
     path: '/credits',
@@ -30,11 +40,15 @@ export const routes: RouteRecordRaw[] = [
 
 const HEADER_OFFSET = 88
 
-export const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
+export const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) return savedPosition
-  if (to.hash) {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    return { el: to.hash, top: HEADER_OFFSET, behavior: reduceMotion ? 'auto' : 'smooth' }
-  }
-  return { top: 0 }
+
+  // Changement de page : on arrive directement en haut (ou sur l'ancre), sans
+  // défilement animé depuis la position de la page précédente.
+  const samePage = to.path === from.path
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const behavior = samePage && !reduceMotion ? 'smooth' : 'instant'
+
+  if (to.hash) return { el: to.hash, top: HEADER_OFFSET, behavior }
+  return { top: 0, behavior: 'instant' }
 }

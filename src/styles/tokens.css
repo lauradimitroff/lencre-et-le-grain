@@ -18,35 +18,35 @@
 
 :root {
   /* Palette de marque */
-  --mint-100: #e3f1ea; /* univers librairie */
-  --mint-300: #bfddd0; /* vert d'eau, couleur principale */
-  --forest-900: #1c3a2e; /* vert forêt, contraste */
-  --forest-700: #2e5544;
+  --sand-100: #f3e3d0; /* sable clair, univers librairie et accents clairs */
+  --brown-900: #4e3020; /* marron chaud foncé, couleur principale et contraste */
+  --brown-700: #62402c;
+  --caramel-600: #8c5230; /* accents : accroches, italiques, prix */
   --cream-50: #fcfaf5; /* ivoire, fond principal */
   --cream-100: #f6f0e4; /* crème */
   --sand-300: #e2d3b8; /* sable */
   --kraft-400: #d8c3a0; /* kraft, univers café */
   --coffee-700: #6e4b32; /* brun café, accents sur fond clair */
   --coffee-900: #3d2a1c; /* brun torréfié, texte sur kraft */
-  --ink-900: #1b2621;
-  --ink-600: #4a5750;
+  --ink-900: #2a1d15;
+  --ink-600: #5e4a3d;
 
   /* Rôles sémantiques */
   --color-bg: var(--cream-50);
   --color-bg-alt: var(--cream-100);
   --color-surface: #ffffff;
-  --color-library: var(--mint-100);
-  --color-accent: var(--mint-300);
+  --color-library: var(--sand-100);
+  --color-accent: var(--kraft-400);
   --color-cafe: var(--kraft-400);
   --color-cafe-ink: var(--coffee-900);
-  --color-primary: var(--forest-900);
-  --color-primary-hover: var(--forest-700);
+  --color-primary: var(--brown-900);
+  --color-primary-hover: var(--brown-700);
   --color-on-primary: var(--cream-50);
   --color-text: var(--ink-900);
   --color-text-muted: var(--ink-600);
-  --color-warm: var(--coffee-700);
-  --color-line: rgb(28 58 46 / 0.14);
-  --color-line-strong: var(--forest-900);
+  --color-warm: var(--caramel-600);
+  --color-line: rgb(78 48 32 / 0.14);
+  --color-line-strong: var(--brown-900);
   --color-focus: var(--coffee-700);
 
   /* Typographie */
@@ -57,10 +57,11 @@
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
+  --text-lead: 1.0625rem; /* textes d'introduction (chapeaux) : 17 px partout */
   --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
   --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
   --text-2xl: clamp(1.875rem, 1.45rem + 1.9vw, 3rem);
-  --text-3xl: clamp(2.5rem, 1.7rem + 3.8vw, 5rem);
+  --text-3xl: clamp(2.375rem, 1.7rem + 2.8vw, 3.75rem); /* titres de page (h1) : 60 px maximum */
 
   --leading-tight: 1.04;
   --leading-snug: 1.3;
@@ -92,8 +93,8 @@
   --radius-btn: 4px;
   --radius-card: 10px;
   --radius-pill: 999px;
-  --shadow-soft: 0 1px 2px rgb(28 58 46 / 0.06), 0 10px 24px -14px rgb(28 58 46 / 0.22);
-  --shadow-lift: 0 2px 4px rgb(28 58 46 / 0.06), 0 22px 40px -20px rgb(28 58 46 / 0.4);
+  --shadow-soft: 0 1px 2px rgb(78 48 32 / 0.06), 0 10px 24px -14px rgb(78 48 32 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(78 48 32 / 0.06), 0 22px 40px -20px rgb(78 48 32 / 0.4);
 
   /* Mouvement */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);

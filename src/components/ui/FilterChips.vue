@@ -37,7 +37,7 @@ const emit = defineEmits<{ 'update:modelValue': [value: T] }>()
   gap: var(--space-2);
   min-height: 2.5rem;
   padding: 0.5rem 0.95rem;
-  border: 1px solid rgb(28 58 46 / 0.32);
+  border: 1px solid rgb(78 48 32 / 0.32);
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--color-text);

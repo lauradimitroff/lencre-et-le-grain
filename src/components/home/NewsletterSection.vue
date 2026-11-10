@@ -54,6 +54,7 @@ import NewsletterForm from './NewsletterForm.vue'
 .newsletter__lead {
   max-width: 48ch;
   color: var(--ink-900);
+  font-size: var(--text-lead);
 }
 
 .newsletter :deep(.newsletter-form__hint) {

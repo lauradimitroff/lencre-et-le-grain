@@ -2,12 +2,31 @@
 import BaseButton from '@/components/ui/BaseButton.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
 import StampLabel from '@/components/ui/StampLabel.vue'
+import { lineIcons } from '@/data/icons'
 import { photos } from '@/data/images'
+
+const facts = [
+  {
+    title: 'Du mardi au dimanche',
+    text: 'dès 8 h en semaine',
+    icon: lineIcons.clock,
+  },
+  {
+    title: '100 % végétal',
+    text: 'boissons et pâtisseries',
+    icon: lineIcons.leaf,
+  },
+  {
+    title: 'Consultation en ligne',
+    text: 'achat sur place',
+    icon: lineIcons.book,
+  },
+]
 </script>
 
 <template>
   <section class="hero" aria-labelledby="hero-title">
-    <!-- Photo pleine largeur, texte posé par-dessus -->
+    <!-- Photo pleine largeur, texte dans un encart clair posé par-dessus (sans voile sur la photo) -->
     <div class="hero__banner">
       <ResponsiveImage
         class="hero__image"
@@ -17,11 +36,10 @@ import { photos } from '@/data/images'
         :widths="[640, 960, 1440, 1920, 2560]"
         priority
       />
-      <div class="hero__shade" aria-hidden="true"></div>
 
       <div class="hero__inner container">
         <div class="hero__text">
-          <StampLabel class="hero__stamp">Café de spécialité · Librairie indépendante</StampLabel>
+          <StampLabel>Café de spécialité · Librairie indépendante</StampLabel>
           <h1 id="hero-title" class="hero__title">
             Un chapitre, <em>un café,</em> et tout le temps qu'il faut.
           </h1>
@@ -31,10 +49,8 @@ import { photos } from '@/data/images'
             deux rues d'ici, et toute la carte est végétale.
           </p>
           <div class="hero__actions">
-            <BaseButton :to="{ path: '/', hash: '#librairie' }" variant="inverse">
-              Découvrir la boutique
-            </BaseButton>
-            <BaseButton to="/carte" variant="inverse-outline">Voir la carte</BaseButton>
+            <BaseButton to="/librairie">Découvrir la sélection de livres</BaseButton>
+            <BaseButton to="/carte" variant="secondary">Voir la carte</BaseButton>
           </div>
         </div>
 
@@ -46,9 +62,30 @@ import { photos } from '@/data/images'
     </div>
 
     <ul class="hero__facts container" aria-label="En bref">
-      <li><strong>Du mardi au dimanche</strong> dès 8 h en semaine</li>
-      <li><strong>100 % végétal</strong> boissons et pâtisseries</li>
-      <li><strong>Consultation en ligne</strong> achat sur place</li>
+      <li
+        v-for="(fact, index) in facts"
+        :key="fact.title"
+        v-reveal.always="200 + index * 160"
+        class="hero__fact"
+      >
+        <span class="hero__fact-badge">
+          <svg
+            class="hero__fact-icon"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path v-for="d in fact.icon" :key="d" :d="d" pathLength="1" />
+          </svg>
+        </span>
+        <strong>{{ fact.title }}</strong> {{ fact.text }}
+      </li>
     </ul>
   </section>
 </template>
@@ -61,56 +98,50 @@ import { photos } from '@/data/images'
 /* ---------- Bandeau photo ---------- */
 .hero__banner {
   position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: flex-end;
-  min-height: min(calc(100svh - var(--header-height) - 2.5rem), 46rem);
-  overflow: hidden;
   border-bottom: var(--border-rule) solid var(--color-primary);
-  background: var(--color-primary);
-  color: var(--cream-50);
+  background: var(--color-library);
 }
 
-/* L'image remplit tout le bandeau, quel que soit son format */
+/* Mobile : la photo en haut, l'encart de texte la chevauche en dessous */
 .hero__banner :deep(.hero__image) {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 17rem;
   aspect-ratio: auto !important;
   object-fit: cover;
   object-position: 60% 50%;
 }
 
-/* Voile vert forêt : garantit le contraste du texte sur la photo */
-.hero__shade {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(0deg, rgb(20 42 33 / 0.92) 0%, rgb(20 42 33 / 0.8) 50%, rgb(20 42 33 / 0.6) 100%);
-}
-
 .hero__inner {
+  position: relative;
   display: grid;
-  gap: var(--space-6);
-  padding-block: var(--space-8) var(--space-7);
+  gap: var(--space-5);
+  margin-top: calc(var(--space-7) * -1);
+  padding-bottom: var(--space-6);
 }
 
+/* Encart de texte : fond plein, la photo reste intacte autour */
 .hero__text {
   display: grid;
   gap: var(--space-5);
   justify-items: start;
-  max-width: 40rem;
+  min-width: 0;
+  max-width: 38rem;
+  padding: var(--space-6) var(--space-5);
+  border: var(--border-rule) solid var(--color-primary);
+  border-radius: var(--radius-card);
+  background: var(--cream-50);
+  box-shadow: var(--shadow-lift);
 }
 
-.hero .hero__stamp {
-  color: var(--kraft-400);
+/* L'étiquette peut passer à la ligne sur petit écran */
+.hero__text :deep(.stamp) {
+  max-width: 100%;
+  line-height: 1.35;
+  white-space: normal;
 }
 
 .hero__title {
-  color: var(--cream-50);
   font-size: var(--text-3xl);
   font-weight: 360;
   letter-spacing: -0.015em;
@@ -118,14 +149,14 @@ import { photos } from '@/data/images'
 }
 
 .hero__title em {
-  color: var(--kraft-400);
+  color: var(--color-warm);
   font-weight: 320;
 }
 
 .hero__lead {
   max-width: 50ch;
-  color: rgb(252 250 245 / 0.9);
-  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  font-size: var(--text-lead);
   line-height: 1.6;
 }
 
@@ -164,12 +195,56 @@ import { photos } from '@/data/images'
 /* ---------- En bref ---------- */
 .hero__facts {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-5);
   margin-top: var(--space-6);
   padding: 0;
   list-style: none;
   color: var(--color-text-muted);
   font-size: var(--text-sm);
+}
+
+.hero__fact {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+}
+
+/* Pastille ronde sable autour de l'icône */
+.hero__fact-badge {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: var(--space-3);
+  border: var(--border-rule) solid var(--color-primary);
+  border-radius: 50%;
+  background: var(--color-library);
+  color: var(--color-primary);
+}
+
+/*
+ * Apparition (avec v-reveal) : la pastille grossit légèrement, puis l'icône
+ * se dessine trait par trait. Sans JS ou en mouvement réduit, tout est visible.
+ */
+.hero__fact.reveal .hero__fact-badge {
+  transform: scale(0.6);
+  transition: transform var(--duration-reveal) cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.hero__fact.reveal .hero__fact-icon path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 200ms);
+}
+
+.hero__fact.reveal.is-visible .hero__fact-badge {
+  transform: none;
+}
+
+.hero__fact.reveal.is-visible .hero__fact-icon path {
+  stroke-dashoffset: 0;
 }
 
 .hero__facts strong {
@@ -188,19 +263,29 @@ import { photos } from '@/data/images'
 }
 
 @media (min-width: 56rem) {
+  /* Grand écran : la photo couvre tout le bandeau, l'encart est posé à gauche */
   .hero__banner {
+    display: flex;
     align-items: center;
+    min-height: min(calc(100svh - var(--header-height) - 2.5rem), 46rem);
+    overflow: hidden;
   }
 
-  /* Sur grand écran, le texte est à gauche : le voile part de la gauche */
-  .hero__shade {
-    background:
-      linear-gradient(90deg, rgb(20 42 33 / 0.9) 0%, rgb(20 42 33 / 0.74) 42%, rgb(20 42 33 / 0.15) 78%, rgb(20 42 33 / 0.05) 100%);
+  .hero__banner :deep(.hero__image) {
+    position: absolute;
+    inset: 0;
+    height: 100%;
   }
 
   .hero__inner {
     grid-template-columns: 1fr auto;
     align-items: end;
+    margin-top: 0;
+    padding-block: var(--space-8);
+  }
+
+  .hero__text {
+    padding: var(--space-7) var(--space-7) var(--space-6);
   }
 
   .hero__note {

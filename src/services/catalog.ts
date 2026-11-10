@@ -13,6 +13,11 @@ export function getBooks(): Book[] {
   return books
 }
 
+/** Les coups de cœur affichés sur l'accueil. */
+export function getFeaturedBooks(): Book[] {
+  return books.filter((book) => book.featured)
+}
+
 export function getBookCategories() {
   return bookCategories
 }

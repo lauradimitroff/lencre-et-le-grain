@@ -39,6 +39,8 @@ export interface Book {
   summary: string
   cover: BookCover
   isNew?: boolean
+  /** Mis en avant sur l'accueil (« coups de cœur »). */
+  featured?: boolean
 }
 
 /* ---------- Café ---------- */

@@ -77,11 +77,11 @@ const year = new Date().getFullYear()
 }
 
 .footer a:hover {
-  color: var(--mint-300);
+  color: var(--kraft-400);
 }
 
 .footer :focus-visible {
-  outline-color: var(--mint-300);
+  outline-color: var(--kraft-400);
 }
 
 .footer__inner {
@@ -113,8 +113,8 @@ const year = new Date().getFullYear()
   align-items: center;
   gap: var(--space-2);
   padding-bottom: var(--space-3);
-  border-bottom: var(--border-rule) solid rgb(191 221 208 / 0.4);
-  color: var(--mint-300);
+  border-bottom: var(--border-rule) solid rgb(216 195 160 / 0.4);
+  color: var(--kraft-400);
   font-family: var(--font-sans);
   font-size: var(--text-2xs);
   font-weight: 650;
@@ -170,7 +170,7 @@ const year = new Date().getFullYear()
   font-size: var(--text-xs);
 }
 .footer__legal .footer__legal-link {
-  color: var(--mint-300);
+  color: var(--kraft-400);
   font-weight: 600;
 }
 

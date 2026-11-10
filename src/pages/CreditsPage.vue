@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PageHeader from '@/components/layout/PageHeader.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
 import { usePageMeta } from '@/composables/usePageMeta'
 import { photos, type Photo } from '@/data/images'
@@ -14,25 +15,17 @@ usePageMeta({
 </script>
 
 <template>
+  <PageHeader title-id="credits-title" eyebrow="Mentions" crumb="Crédits">
+    <template #title>Crédits</template>
+    <p>
+      L'Encre &amp; le Grain est un projet de portfolio : le lieu, la carte, l'adresse et les
+      horaires sont inventés. Voici d'où viennent les images, les polices et les informations
+      utilisées sur le site.
+    </p>
+  </PageHeader>
+
   <section class="credits section" aria-labelledby="credits-title">
     <div class="container credits__inner">
-      <nav aria-label="Fil d'Ariane" class="credits__crumbs">
-        <ol>
-          <li><RouterLink to="/">Accueil</RouterLink></li>
-          <li aria-current="page">Crédits</li>
-        </ol>
-      </nav>
-
-      <header class="credits__head">
-        <p class="eyebrow">Mentions</p>
-        <h1 id="credits-title" class="credits__title">Crédits</h1>
-        <p class="credits__lead">
-          L'Encre &amp; le Grain est un projet de portfolio : le lieu, la carte, l'adresse et les
-          horaires sont inventés. Voici d'où viennent les images, les polices et les informations
-          utilisées sur le site.
-        </p>
-      </header>
-
       <section class="credits__block" aria-labelledby="credits-photos">
         <h2 id="credits-photos" class="credits__subtitle">Photographies</h2>
         <p class="credits__text">
@@ -95,45 +88,15 @@ usePageMeta({
   max-width: 56rem;
 }
 
-.credits__crumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: 0;
-  padding: 0;
-  color: var(--color-text-muted);
-  font-size: var(--text-xs);
-  list-style: none;
-}
 
-.credits__crumbs li + li::before {
-  content: '/';
-  margin-right: var(--space-2);
-  opacity: 0.6;
-}
 
-.credits__crumbs a,
 .credits__text a,
 .credits__photo a {
   color: var(--color-primary);
 }
 
-.credits__head {
-  display: grid;
-  gap: var(--space-4);
-}
 
-.credits__title {
-  font-size: var(--text-3xl);
-  font-weight: 360;
-  line-height: var(--leading-tight);
-}
 
-.credits__lead {
-  max-width: 60ch;
-  color: var(--color-text-muted);
-  font-size: var(--text-lg);
-}
 
 .credits__block {
   display: grid;

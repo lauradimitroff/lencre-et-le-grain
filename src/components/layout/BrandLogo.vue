@@ -29,7 +29,7 @@ withDefaults(defineProps<{ tone?: 'dark' | 'light' }>(), { tone: 'dark' })
 
 .logo--light {
   color: var(--cream-50);
-  --stamp: var(--mint-300);
+  --stamp: var(--kraft-400);
 }
 
 /* L'esperluette italique (direction A) dans le tampon circulaire (direction B) */

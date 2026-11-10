@@ -30,7 +30,7 @@ export const photos = {
     id: '1550399105-05c4a7641b02',
     alt: 'Mur de livres anciens empilés à plat, aux reliures en toile rouge, bleue et verte ornées de dorures.',
     color: '#6b4a48',
-    usage: 'Accueil, section « L’esprit du lieu »',
+    usage: 'Accueil (« L’esprit du lieu ») et page Notre histoire',
     credit: {
       author: 'Ed Robertson',
       authorUrl: 'https://unsplash.com/@eddrobertson',
@@ -41,7 +41,7 @@ export const photos = {
     id: '1442512595331-e89e73853f31',
     alt: 'Un barista verse l’eau d’une bouilloire col de cygne sur un filtre à café en papier.',
     color: '#6f7471',
-    usage: 'Accueil, section « Le café »',
+    usage: 'Accueil (« Le café ») et page Notre histoire',
     credit: {
       author: 'Karl Fredrickson',
       authorUrl: 'https://unsplash.com/@kfred',

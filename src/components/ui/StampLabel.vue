@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ tone?: 'warm' | 'forest' | 'kraft' }>(), { tone: 'warm' })
+withDefaults(defineProps<{ tone?: 'warm' | 'brown' | 'kraft' }>(), { tone: 'warm' })
 </script>
 
 <template>
@@ -26,7 +26,7 @@ withDefaults(defineProps<{ tone?: 'warm' | 'forest' | 'kraft' }>(), { tone: 'war
   color: var(--color-warm);
 }
 
-.stamp--forest {
+.stamp--brown {
   color: var(--color-primary);
 }
 
