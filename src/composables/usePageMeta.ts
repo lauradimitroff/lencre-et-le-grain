@@ -7,7 +7,7 @@ interface PageMeta {
   /** Chemin de la page, ex. « / » ou « /librairie ». */
   path: string
   /** Image d'aperçu de partage générée dans public/og/ (npm run og). */
-  ogImage?: 'accueil' | 'librairie' | 'carte' | 'histoire'
+  ogImage?: 'accueil' | 'librairie' | 'carte' | 'histoire' | 'contact'
 }
 
 /** Titre, description, URL canonique, Open Graph et carte Twitter d'une page. */

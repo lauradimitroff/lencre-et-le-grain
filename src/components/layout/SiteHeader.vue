@@ -144,9 +144,7 @@ onBeforeUnmount(() => {
           </li>
         </ul>
 
-        <RouterLink :to="{ path: '/', hash: '#infos' }" class="header__hours" @click="close()">
-          Horaires &amp; accès
-        </RouterLink>
+        <RouterLink to="/contact" class="header__hours" @click="close()">Contact</RouterLink>
 
         <p class="header__panel-note">
           {{ shopInfo.tagline }}<br />
@@ -373,7 +371,8 @@ onBeforeUnmount(() => {
     color var(--duration-fast) ease;
 }
 
-.header__hours:hover {
+.header__hours:hover,
+.header__hours.router-link-exact-active {
   background: var(--color-primary);
   color: var(--color-on-primary);
 }

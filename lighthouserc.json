@@ -7,7 +7,8 @@
         "http://localhost:4181/",
         "http://localhost:4181/librairie",
         "http://localhost:4181/carte",
-        "http://localhost:4181/histoire"
+        "http://localhost:4181/histoire",
+        "http://localhost:4181/contact"
       ],
       "numberOfRuns": 1
     },

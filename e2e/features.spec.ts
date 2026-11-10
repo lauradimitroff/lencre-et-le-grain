@@ -68,7 +68,7 @@ test('le badge d’ouverture suit les horaires (heure de Paris)', async ({ page 
 
 test('chaque page a sa propre image de partage', async ({ page, request }) => {
   const images = new Set<string>()
-  for (const path of ['/', '/librairie', '/carte', '/histoire']) {
+  for (const path of ['/', '/librairie', '/carte', '/histoire', '/contact']) {
     await page.goto(path)
     const url = await page.locator('meta[property="og:image"]').getAttribute('content')
     expect(url, path).toMatch(/\/og\/[a-z]+\.jpg$/)
@@ -78,7 +78,7 @@ test('chaque page a sa propre image de partage', async ({ page, request }) => {
     expect(response.status(), url!).toBe(200)
     expect(response.headers()['content-type']).toContain('image/jpeg')
   }
-  expect(images.size).toBe(4)
+  expect(images.size).toBe(5)
 })
 
 test('le titre des plus demandés fait défiler son dernier mot, sans gêner les lecteurs d’écran', async ({ page }) => {
@@ -100,4 +100,49 @@ test('en mouvement réduit, le mot ne défile pas', async ({ page }) => {
   await page.locator('#cafe .menu-card__title').scrollIntoViewIfNeeded()
   await page.waitForTimeout(3000)
   await expect(page.locator('#cafe .rotating__word.is-current')).toHaveText('demandés')
+})
+
+test.describe('formulaire de contact (démonstration)', () => {
+  test('signale les champs manquants et place le focus sur le premier', async ({ page }) => {
+    await page.goto('/contact')
+    await page.getByRole('button', { name: 'Envoyer le message' }).click()
+    await expect(page.getByLabel('Nom ou prénom')).toBeFocused()
+    await expect(page.getByLabel('Nom ou prénom')).toHaveAttribute('aria-invalid', 'true')
+    await expect(page.getByText('Choisissez le sujet de votre message.')).toBeVisible()
+
+    // Les erreurs disparaissent au fil de la saisie
+    await page.getByLabel('Nom ou prénom').fill('Camille')
+    await expect(page.getByLabel('Nom ou prénom')).toHaveAttribute('aria-invalid', 'false')
+  })
+
+  test("affiche un succès qui précise que rien n'a été envoyé, sans aucune requête", async ({ page }) => {
+    await page.goto('/contact')
+    const requests: string[] = []
+    page.on('request', (request) => {
+      if (['xhr', 'fetch'].includes(request.resourceType())) requests.push(request.url())
+    })
+
+    await page.getByLabel('Nom ou prénom').fill('Camille')
+    await page.getByLabel('Adresse e-mail').fill('camille@exemple.fr')
+    await page.getByLabel('Sujet').selectOption('livre')
+    await page.getByLabel('Message').fill('Bonjour, avez-vous la suite de Nettle & Bone ?')
+    await page.getByRole('button', { name: 'Envoyer le message' }).click()
+
+    const sent = page.getByTestId('contact-sent')
+    await expect(sent).toBeVisible()
+    await expect(sent.getByRole('heading', { name: /Merci, Camille/ })).toBeFocused()
+    await expect(sent).toContainText("n'a été ni envoyé ni enregistré")
+    expect(requests).toEqual([])
+
+    await sent.getByRole('button', { name: 'Écrire un autre message' }).click()
+    await expect(page.getByLabel('Nom ou prénom')).toHaveValue('')
+  })
+
+  test("le bouton Contact de l'en-tête mène à la page", async ({ page, isMobile }) => {
+    await page.goto('/')
+    if (isMobile) await page.getByRole('button', { name: 'Menu', exact: true }).click()
+    await page.getByRole('navigation', { name: 'Navigation principale' }).getByRole('link', { name: 'Contact' }).click()
+    await expect(page).toHaveURL('/contact')
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Nous trouver')
+  })
 })

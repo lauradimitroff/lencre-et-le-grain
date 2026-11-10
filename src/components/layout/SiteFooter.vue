@@ -21,6 +21,7 @@ const year = new Date().getFullYear()
           <li v-for="item in mainNavigation" :key="item.label">
             <RouterLink :to="item.to">{{ item.label }}</RouterLink>
           </li>
+          <li><RouterLink to="/contact">Contact</RouterLink></li>
           <li><RouterLink :to="{ path: '/', hash: '#newsletter' }">Lettre d'information</RouterLink></li>
           <li><RouterLink to="/credits">Crédits</RouterLink></li>
         </ul>

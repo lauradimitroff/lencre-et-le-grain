@@ -64,6 +64,13 @@ const pages = [
     title: 'Une ancienne imprimerie, <em>trois fauteuils</em> et beaucoup de papier',
     visual: { photo: PHOTOS.books },
   },
+  {
+    file: 'contact',
+    eyebrow: 'Contact',
+    title: 'Nous trouver <em>&amp; nous écrire</em>',
+    text: '12, passage des Lettres. Du mardi au dimanche, dès 8\u00a0h en semaine.',
+    visual: { photo: PHOTOS.cafe },
+  },
 ]
 
 function template({ eyebrow, title, text, visual }) {

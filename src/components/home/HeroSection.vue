@@ -45,10 +45,9 @@ const facts = [
             Un chapitre, <em>un café,</em> et tout le temps qu'il faut.
           </h1>
           <p class="hero__lead">
-            Une librairie de quartier où l'on vient choisir un roman, s'installer près de la fenêtre
-            et laisser refroidir sa tasse.
+            Un café de quartier où l'on vient pour un espresso, et où l'on reste pour un roman.
             <span class="hero__lead-more">
-              Les livres sont choisis un par un, le café est torréfié à deux rues d'ici, et toute la
+              Les grains sont torréfiés à deux rues d'ici, les livres choisis un par un, et toute la
               carte est végétale.
             </span>
           </p>

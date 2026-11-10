@@ -20,7 +20,7 @@ const totalCount = getMenu().reduce((sum, section) => sum + section.items.length
           title-id="cafe-title"
           eyebrow="Le café"
           title="Torréfié tout près, servi sans hâte"
-          lead="Un assemblage maison pour l'espresso, une origine qui change chaque semaine au filtre, et des pâtisseries végétales sorties du four le matin même."
+          lead="Nos grains arrivent chaque semaine d'un petit torréfacteur voisin. Chaque tasse est préparée à la commande, et les pâtisseries végétales sortent du four tous les matins."
         />
         <figure class="cafe__media" v-reveal>
           <ResponsiveImage

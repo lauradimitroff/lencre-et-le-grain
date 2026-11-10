@@ -25,6 +25,9 @@ menu mène directement à ces pages, pré-rendues comme l'accueil :
 - [`/carte`](https://lencre-et-le-grain.vercel.app/carte) : la carte complète du café, avec un
   filtre allergènes (« Sans gluten », « Sans fruits à coque », « Sans soja »)
 - [`/histoire`](https://lencre-et-le-grain.vercel.app/histoire) : l'histoire (inventée) du lieu
+- [`/contact`](https://lencre-et-le-grain.vercel.app/contact) : infos pratiques, plan illustratif
+  et formulaire de démonstration. Il valide la saisie, simule l'envoi, puis précise que rien
+  n'a été envoyé ni enregistré (aucune requête réseau, vérifié par un test)
 - [`/credits`](https://lencre-et-le-grain.vercel.app/credits) : photos, polices et sources
 
 Une page 404 sert les adresses inconnues.
