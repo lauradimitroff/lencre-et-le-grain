@@ -34,15 +34,17 @@ usePageMeta({
 </script>
 
 <template>
-  <PageHeader title-id="story-title" eyebrow="Notre histoire" crumb="Notre histoire">
-    <template #title>
-      Une ancienne imprimerie, <em>trois fauteuils</em> et beaucoup de papier
-    </template>
+  <PageHeader
+    title-id="story-title"
+    eyebrow="Notre histoire"
+    crumb="Notre histoire"
+    note="Ce lieu et son histoire sont imaginés pour un projet de portfolio."
+  >
+    <template #title>De l'encre <em>au grain</em></template>
     <p>
-      L'Encre &amp; le Grain est né d'une envie simple : réunir sous le même toit les deux choses
-      qui font les bons après-midi, un livre et une tasse.
+      Comment une ancienne imprimerie de quartier est devenue un café, avec un coin librairie
+      pour les après-midi qui s'étirent.
     </p>
-    <small>Ce lieu et son histoire sont imaginés pour un projet de portfolio.</small>
   </PageHeader>
 
   <article class="story" aria-labelledby="story-title">

@@ -18,9 +18,8 @@ usePageMeta({
   <PageHeader title-id="credits-title" eyebrow="Mentions" crumb="Crédits">
     <template #title>Crédits</template>
     <p>
-      L'Encre &amp; le Grain est un projet de portfolio : le lieu, la carte, l'adresse et les
-      horaires sont inventés. Voici d'où viennent les images, les polices et les informations
-      utilisées sur le site.
+      D'où viennent les images, les polices et les informations du site. Le lieu, la carte,
+      l'adresse et les horaires sont inventés pour un projet de portfolio.
     </p>
   </PageHeader>
 

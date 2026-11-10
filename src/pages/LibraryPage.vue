@@ -16,17 +16,17 @@ usePageMeta({
 </script>
 
 <template>
-  <PageHeader title-id="library-title" eyebrow="Le coin librairie" crumb="Le coin librairie">
+  <PageHeader
+    title-id="library-title"
+    eyebrow="Le coin librairie"
+    crumb="Le coin librairie"
+    note="Les livres existent vraiment ; les prix sont indicatifs. Les couvertures sont des illustrations créées pour le site, pas celles des éditeurs."
+  >
     <template #title>La sélection <em>d'automne</em></template>
     <p>
-      {{ total }} livres pour les soirées qui raccourcissent : sorcières, manoirs, forêts qui
-      murmurent et fantasy douce comme un latte. Tous sont à feuilleter sur place, près de la
-      machine à café.
+      {{ total }} livres pour les soirées qui raccourcissent : sorcières, manoirs et fantasy douce
+      comme un latte, à feuilleter sur place.
     </p>
-    <small>
-      Les livres existent vraiment ; les prix sont indicatifs. Les couvertures sont des
-      illustrations créées pour le site, pas celles des éditeurs.
-    </small>
   </PageHeader>
 
   <section class="library section" aria-labelledby="library-title">

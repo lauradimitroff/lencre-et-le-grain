@@ -1,24 +1,23 @@
 <script setup lang="ts">
 /**
- * En-tête des pages intérieures : bandeau coloré qui détache le titre du
- * menu, avec fil d'Ariane et tampon décoratif aux couleurs de la marque.
+ * En-tête des pages intérieures : bandeau sable identique sur toutes les pages
+ * (même fond, même hauteur minimale), avec fil d'Ariane et tampon décoratif.
+ * Pour garder la même hauteur partout, l'introduction tient en deux lignes et
+ * les mentions (« fictif », « prix indicatifs ») passent sous le bandeau.
  */
-withDefaults(
-  defineProps<{
-    /** Identifiant du h1, pour aria-labelledby. */
-    titleId: string
-    eyebrow: string
-    /** Libellé de la page dans le fil d'Ariane. */
-    crumb: string
-    /** Sable pour la librairie et les pages générales, kraft pour l'univers café. */
-    tone?: 'sand' | 'kraft'
-  }>(),
-  { tone: 'sand' },
-)
+defineProps<{
+  /** Identifiant du h1, pour aria-labelledby. */
+  titleId: string
+  eyebrow: string
+  /** Libellé de la page dans le fil d'Ariane. */
+  crumb: string
+  /** Mention affichée juste sous le bandeau. */
+  note?: string
+}>()
 </script>
 
 <template>
-  <header class="page-header" :class="`page-header--${tone}`">
+  <header class="page-header">
     <div class="container page-header__inner">
       <nav aria-label="Fil d'Ariane" class="page-header__crumbs">
         <ol>
@@ -41,6 +40,7 @@ withDefaults(
       </div>
     </div>
   </header>
+  <p v-if="note" class="page-header__note container">{{ note }}</p>
 </template>
 
 <style scoped>
@@ -51,13 +51,13 @@ withDefaults(
   background: var(--color-library);
 }
 
-.page-header--kraft {
-  background: var(--color-cafe);
-}
 
 .page-header__inner {
   display: grid;
+  align-content: start;
   gap: var(--space-6);
+  /* Même hauteur sur toutes les pages (celle de la carte) */
+  min-height: 24.5rem;
   padding-block: var(--space-7) var(--space-8);
 }
 
@@ -72,14 +72,7 @@ withDefaults(
   list-style: none;
 }
 
-/* Le caramel n'est pas assez contrasté sur le kraft : on passe au marron */
-.page-header--kraft .eyebrow {
-  color: var(--color-primary);
-}
 
-.page-header--kraft .page-header__crumbs ol {
-  color: var(--color-cafe-ink);
-}
 
 .page-header__crumbs li + li::before {
   content: '/';
@@ -123,11 +116,10 @@ withDefaults(
   font-size: var(--text-lead);
 }
 
-.page-header--kraft .page-header__lead {
-  color: var(--color-cafe-ink);
-}
 
-.page-header__lead :deep(small) {
+.page-header__note {
+  padding-top: var(--space-4);
+  color: var(--color-text-muted);
   font-size: var(--text-xs);
   font-style: italic;
 }
@@ -138,6 +130,10 @@ withDefaults(
 }
 
 @media (min-width: 56rem) {
+  .page-header__inner {
+    min-height: 21.875rem;
+  }
+
   .page-header__grid {
     grid-template-columns: 1fr auto;
   }
@@ -159,11 +155,6 @@ withDefaults(
     transform: rotate(-8deg);
   }
 
-  .page-header--kraft .page-header__stamp {
-    box-shadow:
-      0 0 0 6px var(--color-cafe),
-      0 0 0 7px var(--color-primary);
-  }
 
   .page-header__amp {
     font-family: var(--font-serif);

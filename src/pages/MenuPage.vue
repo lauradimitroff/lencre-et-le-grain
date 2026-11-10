@@ -33,7 +33,7 @@ usePageMeta({
 </script>
 
 <template>
-  <PageHeader title-id="menu-page-title" eyebrow="Le café" crumb="La carte" tone="kraft">
+  <PageHeader title-id="menu-page-title" eyebrow="Le café" crumb="La carte">
     <template #title>La carte</template>
     <p>
       Espresso, méthodes douces, boissons de saison et pâtisseries sorties du four le matin. La

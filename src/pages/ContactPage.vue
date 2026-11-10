@@ -15,13 +15,17 @@ usePageMeta({
 </script>
 
 <template>
-  <PageHeader title-id="contact-title" eyebrow="Contact" crumb="Contact">
+  <PageHeader
+    title-id="contact-title"
+    eyebrow="Contact"
+    crumb="Contact"
+    note="Adresse, téléphone, e-mail et horaires sont fictifs ; le formulaire n'envoie rien."
+  >
     <template #title>Nous trouver <em>&amp; nous écrire</em></template>
     <p>
       Une question sur un livre, sur la carte ou sur nos horaires ? Passez au comptoir, ou
       laissez-nous quelques lignes ci-dessous.
     </p>
-    <small>Adresse, téléphone, e-mail et horaires sont fictifs ; le formulaire n'envoie rien.</small>
   </PageHeader>
 
   <section class="contact section" aria-labelledby="contact-title">

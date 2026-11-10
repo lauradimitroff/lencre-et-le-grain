@@ -4,7 +4,7 @@ const pages = [
   { path: '/', title: /Un chapitre/ },
   { path: '/librairie', title: /La sélection/ },
   { path: '/carte', title: /La carte/ },
-  { path: '/histoire', title: /Une ancienne imprimerie/ },
+  { path: '/histoire', title: /De l'encre/ },
   { path: '/contact', title: /Nous trouver/ },
   { path: '/credits', title: /./ },
 ]

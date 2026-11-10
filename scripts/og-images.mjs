@@ -61,7 +61,8 @@ const pages = [
   {
     file: 'histoire',
     eyebrow: 'Notre histoire',
-    title: 'Une ancienne imprimerie, <em>trois fauteuils</em> et beaucoup de papier',
+    title: 'De l’encre <em>au grain</em>',
+    text: 'Comment une ancienne imprimerie de quartier est devenue un café, avec un coin librairie.',
     visual: { photo: PHOTOS.books },
   },
   {

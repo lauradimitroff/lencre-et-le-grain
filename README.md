@@ -79,8 +79,9 @@ Mélange de deux pistes explorées en amont :
 - **Structure d'atelier** : filets marron chaud, étiquettes « tamponnées », boutons en
   capitales et **papier kraft pour tout l'univers du café**.
 
-Le coin librairie vit sur le sable clair, le café sur le kraft. Le logo réunit les deux :
-l'esperluette italique dans un tampon circulaire.
+Le coin librairie vit sur le sable clair, le café sur le kraft (fiche de la carte, newsletter).
+Le logo réunit les deux : l'esperluette italique dans un tampon circulaire. Les en-têtes des pages
+intérieures sont tous identiques : fond sable, même hauteur.
 
 | Rôle | Couleur |
 | --- | --- |
