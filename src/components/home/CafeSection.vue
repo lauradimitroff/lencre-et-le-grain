@@ -2,6 +2,7 @@
 import BaseButton from '@/components/ui/BaseButton.vue'
 import MenuCard from '@/components/cafe/MenuCard.vue'
 import ResponsiveImage from '@/components/ui/ResponsiveImage.vue'
+import RotatingWord from '@/components/ui/RotatingWord.vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import { photos } from '@/data/images'
 import { getBestSellers, getMenu } from '@/services/catalog'
@@ -33,10 +34,13 @@ const totalCount = getMenu().reduce((sum, section) => sum + section.items.length
 
       <MenuCard
         :sections="bestSellers"
-        title="Les plus demandés"
         intro="Ce que l'on commande le plus au comptoir en ce moment. Tout est végétal, des laits aux pâtisseries."
         v-reveal
       >
+        <template #title>
+          Les plus
+          <RotatingWord :words="['demandés', 'appréciés', 'gourmands', 'réconfortants']" />
+        </template>
         <BaseButton to="/carte">Voir toute la carte</BaseButton>
         <p class="cafe__count">{{ pluralize(totalCount, 'boisson ou douceur', 'boissons et douceurs') }} au total</p>
       </MenuCard>

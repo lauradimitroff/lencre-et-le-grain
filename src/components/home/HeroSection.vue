@@ -46,8 +46,11 @@ const facts = [
           </h1>
           <p class="hero__lead">
             Une librairie de quartier où l'on vient choisir un roman, s'installer près de la fenêtre
-            et laisser refroidir sa tasse. Les livres sont choisis un par un, le café est torréfié à
-            deux rues d'ici, et toute la carte est végétale.
+            et laisser refroidir sa tasse.
+            <span class="hero__lead-more">
+              Les livres sont choisis un par un, le café est torréfié à deux rues d'ici, et toute la
+              carte est végétale.
+            </span>
           </p>
           <div class="hero__actions">
             <BaseButton to="/librairie">Découvrir la sélection de livres</BaseButton>
@@ -94,21 +97,30 @@ const facts = [
 
 <style scoped>
 .hero {
-  padding-bottom: var(--space-7);
+  padding-bottom: var(--space-6);
 }
 
 /* ---------- Bandeau photo ---------- */
+/*
+ * La photo couvre tout le bandeau, sans voile ; le texte est posé dessus dans
+ * un encart crème. Sur mobile, le bandeau occupe l'écran visible sous l'en-tête
+ * et l'encart se cale en bas de la photo.
+ */
 .hero__banner {
   position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: calc(100svh - var(--header-height) - 1.6rem);
+  overflow: hidden;
   border-bottom: var(--border-rule) solid var(--color-primary);
   background: var(--color-library);
 }
 
-/* Mobile : la photo en haut, l'encart de texte la chevauche en dessous */
 .hero__banner :deep(.hero__image) {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 17rem;
+  height: 100%;
   aspect-ratio: auto !important;
   object-fit: cover;
   object-position: 60% 50%;
@@ -117,27 +129,27 @@ const facts = [
 .hero__inner {
   position: relative;
   display: grid;
-  gap: var(--space-5);
-  margin-top: calc(var(--space-7) * -1);
-  padding-bottom: var(--space-6);
+  gap: var(--space-4);
+  padding-block: var(--space-5);
 }
 
 /* Encart de texte : fond plein, la photo reste intacte autour */
 .hero__text {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   justify-items: start;
   min-width: 0;
   max-width: 38rem;
-  padding: var(--space-6) var(--space-5);
+  padding: var(--space-5) var(--space-4);
   border: var(--border-rule) solid var(--color-primary);
   border-radius: var(--radius-card);
   background: var(--cream-50);
   box-shadow: var(--shadow-lift);
 }
 
-/* L'étiquette peut passer à la ligne sur petit écran */
+/* Sur mobile, l'étiquette est masquée pour laisser voir la photo (l'introduction dit déjà l'essentiel) */
 .hero__text :deep(.stamp) {
+  display: none;
   max-width: 100%;
   line-height: 1.35;
   white-space: normal;
@@ -162,25 +174,37 @@ const facts = [
   line-height: 1.6;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-2);
+/* Sur mobile, l'introduction s'arrête à la première phrase */
+.hero__lead-more {
+  display: none;
 }
 
+.hero__actions {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-1);
+}
+
+.hero__actions :deep(.btn) {
+  padding-inline: var(--space-3);
+  letter-spacing: 0.05em;
+}
+
+/* Mobile : l'encadré « Au filtre » passe en haut à droite, sur la photo */
 .hero__note {
+  order: -1;
   display: grid;
   gap: var(--space-1);
-  justify-self: start;
-  max-width: 16rem;
-  padding: var(--space-3) var(--space-4);
+  justify-self: end;
+  max-width: 13rem;
+  padding: var(--space-2) var(--space-3);
   border: var(--border-rule) solid var(--color-primary);
   border-radius: var(--radius-btn);
   background: var(--color-cafe);
   color: var(--ink-900);
   font-family: var(--font-serif);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   line-height: 1.3;
   box-shadow: var(--shadow-soft);
 }
@@ -195,33 +219,43 @@ const facts = [
 }
 
 /* ---------- En bref ---------- */
+/* Mobile : trois colonnes compactes, centrées */
 .hero__facts {
   display: grid;
-  gap: var(--space-5);
-  margin-top: var(--space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-5);
   padding: 0;
   list-style: none;
   color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-2xs);
+  line-height: 1.35;
+  text-align: center;
 }
 
 .hero__fact {
   display: grid;
   gap: var(--space-1);
-  justify-items: start;
+  justify-items: center;
+  align-content: start;
 }
 
 /* Pastille ronde sable autour de l'icône */
 .hero__fact-badge {
   display: grid;
   place-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  margin-bottom: var(--space-3);
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-2);
   border: var(--border-rule) solid var(--color-primary);
   border-radius: 50%;
   background: var(--color-library);
   color: var(--color-primary);
+}
+
+.hero__fact-icon {
+  width: 22px;
+  height: 22px;
 }
 
 /*
@@ -253,45 +287,88 @@ const facts = [
   display: block;
   color: var(--color-primary);
   font-family: var(--font-serif);
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
   font-weight: 400;
 }
 
 @media (min-width: 40rem) {
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    width: auto;
+  }
+
+  .hero__actions :deep(.btn) {
+    padding-inline: 1.4rem;
+    letter-spacing: var(--tracking-button);
+  }
+
+  .hero__text {
+    padding: var(--space-5);
+  }
+
+  .hero__lead-more {
+    display: inline;
+  }
+
+  .hero__text :deep(.stamp) {
+    display: inline-flex;
+  }
+
   .hero__facts {
-    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-5);
+    margin-top: var(--space-6);
+    font-size: var(--text-sm);
+    line-height: inherit;
+    text-align: left;
+  }
+
+  .hero__fact {
+    justify-items: start;
+  }
+
+  .hero__fact-badge {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__fact-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero__facts strong {
+    font-size: var(--text-lg);
   }
 }
 
 @media (min-width: 56rem) {
-  /* Grand écran : la photo couvre tout le bandeau, l'encart est posé à gauche */
+  /* Grand écran : bandeau un peu moins haut, encart à gauche, note à droite */
   .hero__banner {
-    display: flex;
     align-items: center;
     min-height: min(calc(100svh - var(--header-height) - 2.5rem), 46rem);
-    overflow: hidden;
-  }
-
-  .hero__banner :deep(.hero__image) {
-    position: absolute;
-    inset: 0;
-    height: 100%;
   }
 
   .hero__inner {
     grid-template-columns: 1fr auto;
     align-items: end;
-    margin-top: 0;
+    gap: var(--space-5);
     padding-block: var(--space-8);
   }
 
   .hero__text {
+    gap: var(--space-5);
     padding: var(--space-7) var(--space-7) var(--space-6);
   }
 
   .hero__note {
+    order: 0;
     justify-self: end;
+    max-width: 16rem;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
   }
 }
 </style>

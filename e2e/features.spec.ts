@@ -80,3 +80,24 @@ test('chaque page a sa propre image de partage', async ({ page, request }) => {
   }
   expect(images.size).toBe(4)
 })
+
+test('le titre des plus demandés fait défiler son dernier mot, sans gêner les lecteurs d’écran', async ({ page }) => {
+  await page.goto('/')
+  const heading = page.getByRole('heading', { name: 'Les plus demandés', exact: true })
+  await heading.scrollIntoViewIfNeeded()
+  await expect(heading).toBeVisible()
+
+  const current = page.locator('#cafe .rotating__word.is-current')
+  await expect(current).toHaveText('demandés')
+  await expect(current).not.toHaveText('demandés', { timeout: 4000 })
+  // Le nom accessible du titre ne change pas pendant le défilement
+  await expect(heading).toHaveAccessibleName('Les plus demandés')
+})
+
+test('en mouvement réduit, le mot ne défile pas', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+  await page.locator('#cafe .menu-card__title').scrollIntoViewIfNeeded()
+  await page.waitForTimeout(3000)
+  await expect(page.locator('#cafe .rotating__word.is-current')).toHaveText('demandés')
+})

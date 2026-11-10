@@ -23,7 +23,9 @@ withDefaults(
   <div class="menu-card">
     <div class="menu-card__head">
       <div>
-        <component :is="`h${level}`" class="menu-card__title">{{ title }}</component>
+        <component :is="`h${level}`" class="menu-card__title">
+          <slot name="title">{{ title }}</slot>
+        </component>
         <p class="menu-card__intro">{{ intro }}</p>
       </div>
       <p class="menu-card__stamp" aria-hidden="true"><span><b>100 %</b>végétal</span></p>

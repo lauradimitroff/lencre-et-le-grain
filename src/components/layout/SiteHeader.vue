@@ -170,16 +170,16 @@ onBeforeUnmount(() => {
 }
 
 /*
- * Fond flouté porté par un pseudo-élément : un backdrop-filter sur l'en-tête
- * lui-même piégerait le panneau en position fixe à l'intérieur de l'en-tête.
+ * Fond plein porté par un pseudo-élément. Pas de flou d'arrière-plan : le nom
+ * de transition de page donné à l'en-tête l'isole du reste de la page, le flou
+ * ne verrait plus le contenu qui défile dessous.
  */
 .header::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
-  backdrop-filter: saturate(1.2) blur(10px);
+  background: var(--color-bg);
 }
 
 .header.is-scrolled {
