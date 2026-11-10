@@ -32,6 +32,8 @@ renvoie à sa page complète, et le menu mène directement à ces pages, pré-re
   n'a été envoyé ni enregistré (aucune requête réseau, vérifié par un test)
 - [`/credits`](https://lencre-et-le-grain.vercel.app/credits) : photos, polices et sources
 
+Une page [`/mentions-legales`](https://lencre-et-le-grain.vercel.app/mentions-legales) indique
+l'éditrice, l'hébergeur et l'absence de collecte de données (aucun cookie, formulaires sans envoi).
 Une page 404 sert les adresses inconnues.
 
 Quelques détails :

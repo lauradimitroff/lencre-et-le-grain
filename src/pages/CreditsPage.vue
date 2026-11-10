@@ -24,7 +24,8 @@ usePageMeta({
   </PageHeader>
 
   <section class="credits section" aria-labelledby="credits-title">
-    <div class="container credits__inner">
+    <div class="container">
+      <div class="credits__inner">
       <section class="credits__block" aria-labelledby="credits-photos">
         <h2 id="credits-photos" class="credits__subtitle">Photographies</h2>
         <p class="credits__text">
@@ -77,10 +78,16 @@ usePageMeta({
         </p>
       </section>
     </div>
+    </div>
   </section>
 </template>
 
 <style scoped>
+/* Moins d'espace en haut que les autres sections : le filet de l'en-tête est juste au-dessus */
+.credits.section {
+  padding-top: var(--space-7);
+}
+
 .credits__inner {
   display: grid;
   gap: var(--space-7);

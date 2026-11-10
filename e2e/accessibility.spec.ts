@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 
-const paths = ['/', '/librairie', '/carte', '/histoire', '/contact', '/credits', '/404']
+const paths = ['/', '/librairie', '/carte', '/histoire', '/contact', '/credits', '/mentions-legales', '/404']
 
 /**
  * Audit automatique axe-core (règles WCAG 2.1 A et AA).

@@ -24,6 +24,7 @@ const year = new Date().getFullYear()
           <li><RouterLink to="/contact">Contact</RouterLink></li>
           <li><RouterLink :to="{ path: '/', hash: '#newsletter' }">Lettre d'information</RouterLink></li>
           <li><RouterLink to="/credits">Crédits</RouterLink></li>
+          <li><RouterLink to="/mentions-legales">Mentions légales</RouterLink></li>
         </ul>
       </nav>
 
@@ -60,6 +61,7 @@ const year = new Date().getFullYear()
       <p>
         Les couvertures sont des illustrations créées pour le site. Photos, polices et sources :
         <RouterLink to="/credits" class="footer__legal-link">voir les crédits</RouterLink>.
+        <RouterLink to="/mentions-legales" class="footer__legal-link">Mentions légales</RouterLink>.
       </p>
     </div>
   </footer>

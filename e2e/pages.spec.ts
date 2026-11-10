@@ -7,6 +7,7 @@ const pages = [
   { path: '/histoire', title: /De l'encre/ },
   { path: '/contact', title: /Nous trouver/ },
   { path: '/credits', title: /./ },
+  { path: '/mentions-legales', title: /Mentions légales/ },
 ]
 
 /** Relève les erreurs JavaScript de la page pendant le test. */
