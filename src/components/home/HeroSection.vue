@@ -157,7 +157,8 @@ const facts = [
 }
 
 .hero__title {
-  font-size: var(--text-3xl);
+  /* Plus discret que les autres h1 : 50 px maximum */
+  font-size: clamp(2.375rem, 1.7rem + 2.8vw, 3.125rem);
   font-weight: 360;
   letter-spacing: -0.015em;
   text-wrap: balance;

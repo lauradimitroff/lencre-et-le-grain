@@ -63,6 +63,7 @@ const year = new Date().getFullYear()
         <RouterLink to="/credits" class="footer__legal-link">voir les crédits</RouterLink>.
         <RouterLink to="/mentions-legales" class="footer__legal-link">Mentions légales</RouterLink>.
       </p>
+      <p>Site réalisé avec Vue 3, TypeScript et Vite, prégénéré en pages statiques (vite-ssg).</p>
     </div>
   </footer>
 </template>
